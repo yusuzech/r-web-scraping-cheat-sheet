@@ -16,8 +16,25 @@ While Hartley uses python's requests and beautifulsoup libraries. This cheat cov
 ### <a href="#rvest6">1.6.Saving Data to disk</a>
 #### <a href="#rvest6.1">1.6.1.Saving Data to csv</a>
 #### <a href="#rvest6.2">1.6.2.Saving Data to SQLite Database</a>
+### <a href="#rvest7">1.7.More Advanced Topics</a>
+#### <a href="#rvest7.1">1.7.1.Javascript Heavy Websites</a>
+#### <a href="#rvest7.2">1.7.2.Content Inside iFrames</a>
+#### <a href="#rvest7.3">1.7.3.Sessions and Cookies</a>
+#### <a href="#rvest7.4">1.7.4.Delays and Backing Off</a>
+#### <a href="#rvest7.5">1.7.5.Spoofing the User Agent</a>
+#### <a href="#rvest7.6">1.7.6.Using Proxy Servers</a>
+#### <a href="#rvest7.7">1.7.7.Setting Timeouts</a>
+#### <a href="#rvest7.8">1.7.8.Handling Network Errors</a>
 ## <a href="#rselenium">2.Web Scraping using Rselenium</a>
 
 
 
 
+Javascript Heavy Websites
+Content Inside iFrames
+Sessions and Cookies
+Delays and Backing Off
+Spoofing the User Agent
+Using Proxy Servers
+Setting Timeouts
+Handling Network Errors
