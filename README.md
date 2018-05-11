@@ -6,10 +6,10 @@ While Hartley uses python's requests and beautifulsoup libraries. This cheat cov
 
 # Talbe of Contents
 
-1. rvest and httr
+## rvest-and-httr
 
 
 2. Rselenium
 
 
-[Link-name2](#Header2)
+[Link-name2](##rvest-and-httr)
