@@ -4,79 +4,12 @@ inspired by Hartley Brody, this cheat sheet is about web scraping with rvest,htt
 
 While Hartley uses python's requests and beautifulsoup libraries. This cheat covers the usage of httr and rvest. In addition, usage of Rselenium(web driver) is also covered.
 
-# <a href="#chapter4">Talbe of Contents</a>
+# <a href="toc">Talbe of Contents</a>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><br>
-<br>
+## <a href="#rvest">1.Web Scraping using rvest and httr</a>
+
+## <a href="#rselenium">2.Web Scraping using Rselenium</a>
+
+
 
 <a name="chapter4"></a> dsfdsf
