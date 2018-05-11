@@ -7,9 +7,13 @@ While Hartley uses python's requests and beautifulsoup libraries. This cheat cov
 # <a href="toc">Talbe of Contents</a>
 
 ## <a href="#rvest">1.Web Scraping using rvest and httr</a>
+### <a href="#rvest1">1.1.Making Simple Requests</a>
+### <a href="#rvest2">1.2.Inspect Response</a>
+### <a href="#rvest3">1.3.Extracting Elements from HTML</a>
+####
 
 ## <a href="#rselenium">2.Web Scraping using Rselenium</a>
 
 
 
-<a name="chapter4"></a> dsfdsf
+
