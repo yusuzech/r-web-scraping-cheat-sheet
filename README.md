@@ -4,7 +4,7 @@ inspired by Hartley Brody, this cheat sheet is about web scraping with rvest,htt
 
 While Hartley uses python's requests and beautifulsoup libraries. This cheat covers the usage of httr and rvest. In addition, usage of Rselenium(web driver) is also covered.
 
-# Talbe of Contents <a name="chapter4"></a> 
+# <a href="#chapter4">Talbe of Contents</a>
 
 <br>
 <br>
@@ -79,5 +79,4 @@ While Hartley uses python's requests and beautifulsoup libraries. This cheat cov
 <br><br>
 <br>
 
-
-Click <a href="#chapter4">here</a> to read chapter 4. 
+<a name="chapter4"></a> dsfdsf
