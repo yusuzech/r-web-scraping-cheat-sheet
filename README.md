@@ -6,7 +6,7 @@ While Hartley uses python's requests and beautifulsoup libraries. This cheat cov
 
 # Talbe of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
-	1. <a href="#rvest1">Useful Libraries</a>
+	1. <a href="#rvest1">Useful Libraries and Resources</a>
 	1. <a href="#rvest2">Making Simple Requests</a>
 	1. <a href="#rvest3">Inspecting Response</a>
 	1. <a href="#rvest4">Extracting Elements from HTML</a>
@@ -26,3 +26,4 @@ While Hartley uses python's requests and beautifulsoup libraries. This cheat cov
 		1. <a href="#rvest7.7">Setting Timeouts</a>
 		1. <a href="#rvest7.8">Handling Network Errors</a>
 1. <a href="#rselenium">Web Scraping using Rselenium</a>
+	1. <a href="#rselenium1">Useful Libraries and Resources</a>
