@@ -120,7 +120,7 @@ my_structure <- html_structure(content_parsed)
 
 ## 1.4. <a name="rvest4">Extracting Elements from HTML</a>
 
-Using regular expression to scrape HTML is not a very good idea, but it does have it usage like scraping all eamails from websites, there is a detailed discussion about this topic on [stackoverflow](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags).  
+Using regular expression to scrape HTML is not a very good idea, but it does have its usage like scraping all emails from websites, there is a detailed discussion about this topic on [stackoverflow](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags).  
 
 **Using rvest:**
 
@@ -152,7 +152,7 @@ my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
 
 ## 1.5. <a name="rvest5">Storing Data in R</a>
 
-rvest can return a vector of elements or even table of elements, so it's  easy to store it in R.
+rvest can return a vector of elements or even table of elements, so it's easy to store it in R.
 
 ### 1.5.1. <a name="rvest5.1">Storing Data as list</a>
 
