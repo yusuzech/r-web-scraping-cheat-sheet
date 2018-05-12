@@ -32,7 +32,28 @@ This cheat sheet contains many examples with real websites. Thus, if any example
 
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
 ## 1.1. <a name="rvest1">Useful Libraries and Resources</a>
+
+[rvest](https://github.com/hadley/rvest) is built upon xml2 package and also accept config from httr package. For most part, we only need rvest. If we want to add extra configurations, we also need httr.
+
+To install those two packages:
+
+```
+install.packages("rvest")
+install.packages("httr")
+```
+
+To load them:
+
+```
+require(rvest)
+require(httr)
+```
+
 ## 1.2. <a name="rvest2">Making Simple Requests</a>
+
+rvest provides two ways of making request:  
+`read_html()` can parse a HTML file or
+
 ## 1.3. <a name="rvest3">Inspecting Response</a>
 ## 1.4. <a name="rvest4">Extracting Elements from HTML</a>
 ## 1.5. <a name="rvest5">Storing Data in R</a>
