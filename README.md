@@ -97,9 +97,18 @@ content_parsed <- content(my_session$response,as = "parsed")
 Search for specific string:
 
 ```r
-#
+library(stringr)
+#regular expression can b used here
+if(str_detect(content_text,"blocked")){
+    print("blocked from website")
+    }
 ```
 
+check content type:
+
+```r
+content_type <- response$headers$`content-type`
+```
 
 ## 1.4. <a name="rvest4">Extracting Elements from HTML</a>
 ## 1.5. <a name="rvest5">Storing Data in R</a>
