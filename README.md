@@ -104,10 +104,16 @@ if(str_detect(content_text,"blocked")){
     }
 ```
 
-check content type:
+check contenmy_structure <- t type:
 
 ```r
-content_type <- response$headers$`content-type`
+() <- response$headers$`content-type`
+```
+
+check html structure:
+
+```r
+my_structure <- html_structure(content_parsed)
 ```
 
 ## 1.4. <a name="rvest4">Extracting Elements from HTML</a>
