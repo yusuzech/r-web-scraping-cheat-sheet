@@ -77,8 +77,27 @@ Alternatively, GET and POST method are available in the httr package.
 
 Check status code:
 
-```
+```r
 status_code(my_session)
+```
+
+Get response and content:
+
+```r
+#response
+response <- my_session$response
+#retrieve content as raw
+content_raw <- content(my_session$response,as = "raw")
+#retrieve content as text
+content_text <- content(my_session$response,as = "text")
+#retrieve content as parsed
+content_parsed <- content(my_session$response,as = "parsed")
+```
+
+Search for specific string:
+
+```r
+#
 ```
 
 
