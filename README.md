@@ -29,3 +29,6 @@ This cheat sheet contains many examples with real websites. Thus, if any example
 		1. <a href="#rvest7.8">Handling Network Errors</a>
 1. <a href="#rselenium">Web Scraping using Rselenium</a>
 	1. <a href="#rselenium1">Useful Libraries and Resources</a>
+
+# 1. <a name="rvest">eb Scraping using rvest and httr</a>
+# 2. <a name="rselenium">Web Scraping using Rselenium</a>
