@@ -111,6 +111,16 @@ content_type <- response$headers$`content-type`
 ```
 
 ## 1.4. <a name="rvest4">Extracting Elements from HTML</a>
+
+Using regular expression to scrape HTML is not a very good idea, but it does have it usage like scraping all eamails from websites, there is a detailed discussion about this topic on [stackoverflow](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags).  
+
+**Using rvest:**
+
+I will scrape https://scrapethissite.com/ for demonstration, since it has static HTML:  
+
+For the purpose of extracting elements, using `read_html()` or `html_session()` are both fine. When using `read_html()`, it returns a xml_document. When using `html_session(), it creates a session and the response is included.
+
+
 ## 1.5. <a name="rvest5">Storing Data in R</a>
 ### 1.5.1. <a name="rvest5.1">Storing Data as list</a>
 ### 1.5.2. <a name="rvest5.2">Storing Data as data.frame</a>
