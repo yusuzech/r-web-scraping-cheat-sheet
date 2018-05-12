@@ -118,7 +118,7 @@ Using regular expression to scrape HTML is not a very good idea, but it does hav
 
 I will scrape https://scrapethissite.com/ for demonstration, since it has static HTML:  
 
-For the purpose of extracting elements, using `read_html()` or `html_session()` are both fine. When using `read_html()`, it returns a xml_document. When using `html_session(), it creates a session and the response is included.
+For the purpose of extracting elements, using `read_html()` or `html_session()` are both fine. When using `read_html()`, it returns a xml_document. When using `html_session()`, it creates a session and the response is included.
 
 ```r
 my_session <- html_session("https://scrapethissite.com/pages/simple/")
@@ -130,17 +130,60 @@ Look for nodes:
 my_nodes <- my_session %>% html_nodes(".country")
 ```
 
-look for attributes:
+Look for attributes:
 
 ```r
 my_attributes <- my_session %>% html_nodes(".country-capital") %>% html_attr("class")
 ```
+
+Look for texts:
+
+```r
+my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
+```
+
 ## 1.5. <a name="rvest5">Storing Data in R</a>
+
+rvest can return a vector of elements or even table of elements, so it's  easy to store it in R.
+
 ### 1.5.1. <a name="rvest5.1">Storing Data as list</a>
+
+Normally, rvest can return a vector, so it's very easy to store it.
+
+```r
+my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
+```
+
 ### 1.5.2. <a name="rvest5.2">Storing Data as data.frame</a>
+
+We can concatenate vectors in a table or using `html_table()` to extract a HTML table directly into a data.frame.
+
+```r
+my_country <- my_session %>% html_nodes(".country-name") %>% html_text()
+my_capitals <- my_session %>% html_nodes(".country-capital") %>% html_text()
+my_table <- data.frame(country = my_country, capital = my_capitals)
+```
+
 ## 1.6. <a name="rvest6">Saving Data to disk</a>
 ### 1.6.1. <a name="rvest6.1">Saving Data to csv</a>
+
+If the data is already stored as a data.frame:
+
+```r
+write.csv(my_table,file="my_table.csv")
+```
+
 ### 1.6.2. <a name="rvest6.2">Saving Data to SQLite Database</a>
+
+After creating the database "webscrape.db":
+
+```r
+library(RSQLite)
+connection <- dbConnect(SQLite(),"webscrape.db")
+dbWriteTable(conn = connection,name = "country_capital",value = my_table)
+dbDisconnect(conn = connection)
+```
+
 ## 1.7. <a name="rvest7">More Advanced Topics</a>
 ### 1.7.1. <a name="rvest7.1">Javascript Heavy Websites</a>
 ### 1.7.2. <a name="rvest7.2">Content Inside iFrames</a>
