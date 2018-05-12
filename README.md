@@ -191,6 +191,16 @@ dbDisconnect(conn = connection)
 ```
 
 ## 1.7. <a name="rvest7">More Advanced Topics</a>
+
+rvest and httr package provides some very useful functions, but they lack the function of:
+
++ prevent errors from breaking loops
++ auto retry requests
++ keep record of failed requests
+
+So I wrote a wrapper function on html_session which can deal with the issues above and make web scraping scripts much more robust. The function and usage can be found in this [repository](https://github.com/yusuzech/r-web-scraping-template). 
+
+
 ### 1.7.1. <a name="rvest7.1">Javascript Heavy Websites</a>
 ### 1.7.2. <a name="rvest7.2">Content Inside iFrames</a>
 ### 1.7.3. <a name="rvest7.3">Sessions and Cookies</a>
