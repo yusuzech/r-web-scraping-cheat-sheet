@@ -120,7 +120,21 @@ I will scrape https://scrapethissite.com/ for demonstration, since it has static
 
 For the purpose of extracting elements, using `read_html()` or `html_session()` are both fine. When using `read_html()`, it returns a xml_document. When using `html_session(), it creates a session and the response is included.
 
+```r
+my_session <- html_session("https://scrapethissite.com/pages/simple/")
+```
 
+Look for nodes:
+
+```r
+my_nodes <- my_session %>% html_nodes(".country")
+```
+
+look for attributes:
+
+```r
+my_attributes <- my_session %>% html_nodes(".country-capital") %>% html_attr("class")
+```
 ## 1.5. <a name="rvest5">Storing Data in R</a>
 ### 1.5.1. <a name="rvest5.1">Storing Data as list</a>
 ### 1.5.2. <a name="rvest5.2">Storing Data as data.frame</a>
