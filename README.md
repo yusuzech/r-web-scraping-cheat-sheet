@@ -6,6 +6,8 @@ While Hartley uses python's requests and beautifulsoup libraries. This cheat cov
 
 This cheat sheet contains many examples with real websites in [example_script](https://github.com/yusuzech/r-web-scraping-cheat-sheet/tree/master/example_script). Thus, if any examples do not work anymore, it may result from the changes in their HTML.
 
+I also created a wrapper function on `html_session()` which deals with more advanced issues in web scraping. The repository is [here](https://github.com/yusuzech/r-web-scraping-template)
+
 # Talbe of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
     1. <a href="#rvest1">Useful Libraries and Resources</a>
