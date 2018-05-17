@@ -1,6 +1,6 @@
 # Web Scraping Reference: Cheat Sheet for Web Scraping using R
 
-Inspired by Hartley Brody, this cheat sheet is about web scraping with rvest,httr, and Rselenium. This is an r version of this blog https://blog.hartleybrody.com/web-scraping-cheat-sheet/. So the table of contents is similar.
+Inspired by Hartley Brody, this cheat sheet is about web scraping with rvest,httr, and Rselenium. This is an r version of this blog https://blog.hartleybrody.com/web-scraping-cheat-sheet/.
 
 While Hartley uses python's requests and beautifulsoup libraries. This cheat covers the usage of httr and rvest. While rvest is good enough for many scraping tasks, httr is required for more advanced techniques. Also, usage of Rselenium(web driver) is also covered.
 
