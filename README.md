@@ -218,7 +218,23 @@ There are pros and cons for each method:
 
 #### 1.Execute javascript
 
+I'm not very familiar with Javascript, I learnt how to use it with this [post](https://datascienceplus.com/scraping-javascript-rendered-web-content-using-r/) 
+
 #### 2.Use Developer tools
+
+I learnt this trick fomr Hartley's blog, the following section are copied from his [post](https://blog.hartleybrody.com/web-scraping-cheat-sheet/):
+
+>Contrary to popular belief, you do not need any special tools to scrape websites that load their content via Javascript. In order for the information to get from their server and show up on a page in your browser, that information had to have been returned in an HTTP response somewhere.
+>
+>It usually means that you won’t be making an HTTP request to the page’s URL that you see at the top of your browser window, but instead you’ll need to find the URL of the AJAX request that’s going on in the background to fetch the data from the server and load it into the page.
+>
+>There’s not really an easy code snippet I can show here, but if you open the Chrome or Firefox Developer Tools, you can load the page, go to the “Network” tab and then look through the all of the requests that are being sent in the background to find the one that’s returning the data you’re looking for. Start by filtering the requests to only XHR or JS to make this easier.
+>
+>Once you find the AJAX request that returns the data you’re hoping to scrape, then you can make your scraper send requests to this URL, instead of to the parent page’s URL. If you’re lucky, the response will be encoded with JSON which is even easier to parse than HTML.
+
+So, as Hartley said, basically, everything displayed on your brower must be sent to you through json,html or other formats. What you need to do is to capture this file. 
+
+The following link shows how to do this:
 
 #### 3.Using Rselenium or other web driver
 
