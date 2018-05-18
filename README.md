@@ -212,9 +212,15 @@ For javascript heavy websites, there are three possible solutions:
 3. Using Rselenium or other web driver
 
 There are pros and cons for each method:  
-1. Executing Javascript in R is the most difficult one, since it requires some knowledge of Javascript, but it makes web-scraping javascript heavy websites with rvest.  
-2. Using Developer tools is not too difficult. The pro is that you only need to know some examples and you can then work on it by yourself. The con is that if the website structure gets more completed, it also require a lot knowledge of HTTP.
-3. The Rselenium is absolutely the easiest solution. The pro is it's easy to learn and use. The con is that it's 
+1. Executing Javascript in R is the most difficult one, since it requires some knowledge of Javascript, but it makes web-scraping javascript heavy websites possible with rvest.  
+2. Using Developer tools is not difficult. The pro is that you only need to learn some examples and you can then work on it by yourself. The con is that if the website structure gets more completed, it require more knowledge of HTTP.
+3. The Rselenium is absolutely the easiest solution. The pro is it's easy to learn and use. The con is that it can be unstable sometimes and related resources is very limited online. In many situations, you may need to refer to python codes with selenium package.
+
+#### 1.Execute javascript
+
+#### 2.Use Developer tools
+
+#### 3.Using Rselenium or other web driver
 
 ### 1.7.2. <a name="rvest7.2">Content Inside iFrames</a>
 ### 1.7.3. <a name="rvest7.3">Sessions and Cookies</a>
