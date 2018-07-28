@@ -263,7 +263,7 @@ It is a very convenient tool and it will render JavaScript and Interactive conte
 1. The first limitation is that:  it is very slow. Depending on the complexity of the websites, it could take seconds to render one page while using httr/rvest takes less than one second. It is fine if you only want to scrape several hundred pages. However, if you want scrape thousands or ten thousands of pages, the speed will become an issue.
 2. The second limitation is that: There is little online resources on Rselenium. In many situations, you can't find related posts on Stack Overflow that solve your problem. You may need to refer to Python/Java Selenium posts for answers and sometimes answers can't be applied in R.
 
-More detailed usage will be explained in **<a name="rselenium">Web Scraping using Rselenium</a>**.
+More detailed usage will be explained in **Web Scraping using Rselenium**.
 
 ### 1.7.2. <a name="rvest7.2">Content Inside iFrames</a>
 ### 1.7.3. <a name="rvest7.3">Sessions and Cookies</a>
