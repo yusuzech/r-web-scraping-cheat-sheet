@@ -77,6 +77,14 @@ my_session <- html_session("http://example.com/page")
 
 Alternatively, GET and POST method are available in the httr package.
 
+```r
+library(httr)
+response <- GET("http://example.com/page")
+#or
+response <- POST("http://example.com/page",
+    body = list(a=1,b=2))
+```
+
 ## 1.3. <a name="rvest3">Inspecting Response</a>
 
 Check status code:
@@ -94,24 +102,28 @@ response <- my_session$response
 content_raw <- content(my_session$response,as = "raw")
 #retrieve content as text
 content_text <- content(my_session$response,as = "text")
-#retrieve content as parsed
+#retrieve content as parsed(parsed automatically)
 content_parsed <- content(my_session$response,as = "parsed")
 ```
+
+\*\*note:
+
+Content maybe parsed incorrectly sometimes. For those situations, you can parse the content to text or raw and use other libraries or functions to parsed it correctly.
 
 Search for specific string:
 
 ```r
 library(stringr)
-#regular expression can b used here
+#regular expression can also be used here
 if(str_detect(content_text,"blocked")){
     print("blocked from website")
     }
 ```
 
-check contenmy_structure <- t type:
+check content type:
 
 ```r
-() <- response$headers$`content-type`
+response$headers$`content-type`
 ```
 
 check html structure:
