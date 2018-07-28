@@ -59,7 +59,9 @@ There are many tutorials available online; these are what I found to be most use
 4. [w3schools CSS selectors reference](https://www.w3schools.com/CSSref/css_selectors.asp) : if you forget CSS syntax, just check it here
 5. [CSS Diner](https://flukeout.github.io/) : the easiest way to learn and understand CSS by playing games.
 
-If you are confused by what object you will get using all the different functions, you can refer it here:
+**If you are confused by what object you will get using all the different functions, you can refer check here:**
+
+
 
 
 ## 1.2. <a name="rvest2">Making Simple Requests</a>
