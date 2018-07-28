@@ -250,11 +250,20 @@ I learnt this trick fomr Hartley's blog, the following section are copied from h
 >
 >Once you find the AJAX request that returns the data you’re hoping to scrape, then you can make your scraper send requests to this URL, instead of to the parent page’s URL. If you’re lucky, the response will be encoded with JSON which is even easier to parse than HTML.
 
-So, as Hartley said, basically, everything displayed on your brower must be sent to you through json,html or other formats. What you need to do is to capture this file. 
+So, as Hartley said, basically, everything displayed on your browser must be sent to you through JSON,HTML or other formats. What you need to do is to capture this file. 
 
 The following link shows how to do this:
 
 #### 3.Using Rselenium or other web driver
+
+Rselenium launches a Chrome/Firefox/IE browser where you can simulate human actions like clicking on links, scrolling up or down.  
+
+It is a very convenient tool and it will render JavaScript and Interactive content automatically, so you don't need to worry about the complex HTTP and AJAX stuff. But there are also some limitations to it:  
+
+1. The first limitation is that:  it is very slow. Depending on the complexity of the websites, it could take seconds to render one page while using httr/rvest takes less than one second. It is fine if you only want to scrape several hundred pages. However, if you want scrape thousands or ten thousands of pages, the speed will become an issue.
+2. The second limitation is that: There is little online resources on Rselenium. In many situations, you can't find related posts on Stack Overflow that solve your problem. You may need to refer to Python/Java Selenium posts for answers and sometimes answers can't be applied in R.
+
+More detailed usage will be explained in **<a name="rselenium">Web Scraping using Rselenium</a>**.
 
 ### 1.7.2. <a name="rvest7.2">Content Inside iFrames</a>
 ### 1.7.3. <a name="rvest7.3">Sessions and Cookies</a>
