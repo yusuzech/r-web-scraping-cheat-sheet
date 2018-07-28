@@ -60,7 +60,7 @@ There are many tutorials available online; these are what I found to be most use
 5. [CSS Diner](https://flukeout.github.io/) : the easiest way to learn and understand CSS by playing games.
 
 **Funtions and classes in rvest/httr:**
-
+![](resources/functions_and_classes.png)
 
 
 
