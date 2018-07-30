@@ -8,13 +8,6 @@ This cheat sheet contains many examples with real websites in [example_script](h
 
 I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hartleybrody.com/guide-to-web-scraping/) by Hartley Brody. Though it uses Python libraries, the underlying logic of web scraping are the same. The same strategies can be applied using any languages including R.
 
-<<<<<<< HEAD
-=======
-**Why using R:**  
-
-While Python has complete web scraping libraries like *beautiful soup*,*requests*,*scrapy*, etc, learning R libraries such as rvest/httr/Rselenium is much easier for most R users. Besides, one can make use of all other great R packages.
-
->>>>>>> 8b08c7c31126e20cc52a728b0c7de27a1f8dd02a
 # Talbe of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
     1. <a href="#rvest1">Useful Libraries and Resources</a>
@@ -119,7 +112,7 @@ content_parsed <- content(my_session$response,as = "parsed")
 
 \*\*note:
 
-Content maybe parsed incorrectly sometimes. For those situations, you can parse the content to text or raw and use other libraries or functions to parsed it correctly.
+Content maybe parsed incorrectly sometimes. For those situations, you can parse the content to text or raw and use other libraries or functions to parse it correctly.
 
 Search for specific string:
 
@@ -273,6 +266,9 @@ It is a very convenient tool and it will render JavaScript and Interactive conte
 More detailed usage will be explained in **Web Scraping using Rselenium**.
 
 ### 1.7.2. <a name="rvest7.2">Content Inside iFrames</a>
+
+
+
 ### 1.7.3. <a name="rvest7.3">Sessions and Cookies</a>
 ### 1.7.4. <a name="rvest7.4">Delays and Backing Off</a>
 ### 1.7.5. <a name="rvest7.5">Spoofing the User Agent</a>
