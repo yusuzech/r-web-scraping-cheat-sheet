@@ -8,12 +8,6 @@ This cheat sheet contains many examples with real websites in [example_script](h
 
 I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hartleybrody.com/guide-to-web-scraping/) by Hartley Brody. Though it uses Python libraries, the underlying logic of web scraping are the same. The same strategies can be applied using any languages including R.
 
-**Why using R:**  
-
-While Python has complete web scraping libraries like *beautiful soup*,*requests*,*scrapy*, etc, learning R libraries such as rvest/httr/Rselenium is much easier for most R users. Besides, one can make use of all other great R packages.
-
-If you only need to scrape less than a couple hundreds of pages, the tutorials should be enough. However, if you need to scrape more pages, then you need to learn more about the advanced topics such as using user agent, using proxies, etc.
-
 # Talbe of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
     1. <a href="#rvest1">Useful Libraries and Resources</a>
@@ -37,7 +31,6 @@ If you only need to scrape less than a couple hundreds of pages, the tutorials s
         1. <a href="#rvest7.8">Handling Network Errors</a>
 1. <a href="#rselenium">Web Scraping using Rselenium</a>
     1. <a href="#rselenium1">Useful Libraries and Resources</a>
-1. <a href="#other_topics">Uncovered Topics</a>
 
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
 ## 1.1. <a name="rvest1">Useful Libraries and Resources</a>
