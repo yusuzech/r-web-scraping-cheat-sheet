@@ -12,8 +12,6 @@ I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hart
 
 While Python has complete web scraping libraries like *beautiful soup*,*requests*,*scrapy*, etc, learning R libraries such as rvest/httr/Rselenium is much easier for most R users. Besides, one can make use of all other great R packages.
 
-If you only need to scrape less than a couple hundreds of pages, the tutorials should be enough. However, if you need to scrape more pages, then you need to learn more about the advanced topics such as using user agent, using proxies, etc.
-
 # Talbe of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
     1. <a href="#rvest1">Useful Libraries and Resources</a>
