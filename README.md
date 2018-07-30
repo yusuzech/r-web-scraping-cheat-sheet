@@ -2,12 +2,19 @@
 
 Inspired by Hartley Brody, this cheat sheet is about web scraping with rvest,httr, and Rselenium. This is an r version of this blog https://blog.hartleybrody.com/web-scraping-cheat-sheet/.
 
-While Hartley uses python's requests and beautifulsoup libraries. This cheat covers the usage of httr and rvest. While rvest is good enough for many scraping tasks, httr is required for more advanced techniques. Also, usage of Rselenium(web driver) is also covered.
+While Hartley uses python's requests and beautifulsoup libraries. This cheatsheet covers the usage of httr and rvest. While rvest is good enough for many scraping tasks, httr is required for more advanced techniques. Also, usage of Rselenium(web driver) is also covered.
 
 This cheat sheet contains many examples with real websites in [example_script](https://github.com/yusuzech/r-web-scraping-cheat-sheet/tree/master/example_script). Thus, if any examples do not work anymore, it may result from the changes in their HTML.
 
 I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hartleybrody.com/guide-to-web-scraping/) by Hartley Brody. Though it uses Python libraries, the underlying logic of web scraping are the same. The same strategies can be applied using any languages including R.
 
+<<<<<<< HEAD
+=======
+**Why using R:**  
+
+While Python has complete web scraping libraries like *beautiful soup*,*requests*,*scrapy*, etc, learning R libraries such as rvest/httr/Rselenium is much easier for most R users. Besides, one can make use of all other great R packages.
+
+>>>>>>> 8b08c7c31126e20cc52a728b0c7de27a1f8dd02a
 # Talbe of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
     1. <a href="#rvest1">Useful Libraries and Resources</a>
