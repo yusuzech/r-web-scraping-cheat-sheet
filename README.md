@@ -58,8 +58,11 @@ There are many tutorials available online; these are what I found to be most use
 3. [Tutorial by Hadley Wickham](http://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/)  : web-scraping tutorial using rvest  
 4. [w3schools CSS selectors reference](https://www.w3schools.com/CSSref/css_selectors.asp) : if you forget CSS syntax, just check it here
 5. [CSS Diner](https://flukeout.github.io/) : the easiest way to learn and understand CSS by playing games.
+   1. [Chrome CSS selector plugin](https://selectorgadget.com/): the best tool to use for choosing CSS selector.
 
 **Funtions and classes in rvest/httr:**
+
+Sometimes you may get confused about all the functions and classes you will have. You can review this file at the moment.
 ![](resources/functions_and_classes.png)
 
 
@@ -77,6 +80,8 @@ pagesource <- html_read("http://example.com/page")
 
 #using html_session which creates a session and accept httr methods
 my_session <- html_session("http://example.com/page")
+#html_session is built upon httr, you can also get response with a session
+response <- my_session$response
 ```
 
 Alternatively, GET and POST method are available in the httr package.
@@ -95,6 +100,7 @@ Check status code:
 
 ```r
 status_code(my_session)
+status_code(response)
 ```
 
 Get response and content:
@@ -260,12 +266,35 @@ Rselenium launches a Chrome/Firefox/IE browser where you can simulate human acti
 
 It is a very convenient tool and it will render JavaScript and Interactive content automatically, so you don't need to worry about the complex HTTP and AJAX stuff. But there are also some limitations to it:  
 
-1. The first limitation is that:  it is very slow. Depending on the complexity of the websites, it could take seconds to render one page while using httr/rvest takes less than one second. It is fine if you only want to scrape several hundred pages. However, if you want scrape thousands or ten thousands of pages, the speed will become an issue.
+1. The first limitation is that:  it is very slow. Depending on the complexity of the websites, it could take seconds to render a single page while using httr/rvest takes less than one second. It is fine if you only want to scrape several hundred pages. However, if you want scrape thousands or ten thousands of pages, then the speed will become an issue.
 2. The second limitation is that: There is little online resources on Rselenium. In many situations, you can't find related posts on Stack Overflow that solve your problem. You may need to refer to Python/Java Selenium posts for answers and sometimes answers can't be applied in R.
 
 More detailed usage will be explained in **Web Scraping using Rselenium**.
 
 ### 1.7.2. <a name="rvest7.2">Content Inside iFrames</a>
+
+Iframes are other websites imbedded in the websites you are viewing as explained on [Wikipedia](https://en.wikipedia.org/wiki/HTML_element#Frames):
+
+> Frames allow a visual HTML Browser window to be split into segments, each of which can show a different document. This can lower bandwidth use, as repeating parts of a layout can be used in one frame, while variable content is displayed in another. This may come at a certain usability cost, especially in non-visual user agents,[[51\]](https://en.wikipedia.org/wiki/HTML_element#cite_note-58) due to separate and independent documents (or websites) being displayed adjacent to each other and being allowed to interact with the same parent window. Because of this cost, frames (excluding the `<iframe>` element) are only allowed in HTML 4.01 Frame-set. Iframes can also hold documents on different servers. In this case the interaction between windows is blocked by the browser. 
+
+
+
+Therefore, to extract content in an iframe, you need to find the link to that HTML.
+
+```r
+#example script
+link_to_iframe <- my_session("www.example.com") %>%
+	html_node("css to locate the iframe") %>%
+	html_attr("src")
+#make another request to the iframe and use this session to extract information
+iframe_session <- html_session(link_to_iframe)
+```
+
+
+
+Here is a tutorial to using [scrapethissite](https://blog.hartleybrody.com/web-scraping-cheat-sheet/#content-inside-iframes):
+
+In this tutorial, we want to get information for each turtle: [**Tutorial Link**](example_script/iframe_tutorial.md)
 
 
 
