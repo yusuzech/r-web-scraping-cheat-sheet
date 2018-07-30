@@ -5,8 +5,8 @@ July 30, 2018
 
 In this tutorial, we are going to use this website: <https://scrapethissite.com/pages/frames/> to extract information inside iframes.
 
-1. Normal method should fail
-============================
+1 Normal method should fail
+---------------------------
 
 At first, let's extract each turtle's name as shown in the image below:
 
@@ -27,8 +27,8 @@ print(turtle_names)
 
 It failed and returned nothing. The reason is that those information are actually from another HTML file and is imbedded in the current page you are reading. So you can't extract anything from current website.
 
-2. Find the iframe
-==================
+2 Find the iframe
+-----------------
 
 To extract turtles' name, we need to find the link to the iframe. Let's use Chrome Developer Tool to find the linke to iframe:
 We can use ctrl+F and search for keyword "iframe" and here we find the link.
