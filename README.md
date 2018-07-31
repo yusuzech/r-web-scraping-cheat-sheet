@@ -2,34 +2,36 @@
 
 Inspired by Hartley Brody, this cheat sheet is about web scraping with rvest,httr, and Rselenium. This is an r version of this blog https://blog.hartleybrody.com/web-scraping-cheat-sheet/.
 
-While Hartley uses python's requests and beautifulsoup libraries. This cheatsheet covers the usage of httr and rvest. While rvest is good enough for many scraping tasks, httr is required for more advanced techniques. Also, usage of Rselenium(web driver) is also covered.
+While Hartley uses python's requests and beautifulsoup libraries, this cheat sheet covers the usage of httr and rvest. While rvest is good enough for many scraping tasks, httr is required for more advanced techniques. Also, usage of Rselenium(web driver) is also covered.
 
 This cheat sheet contains many examples with real websites in [example_script](https://github.com/yusuzech/r-web-scraping-cheat-sheet/tree/master/example_script). Thus, if any examples do not work anymore, it may result from the changes in their HTML.
 
-I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hartleybrody.com/guide-to-web-scraping/) by Hartley Brody. Though it uses Python libraries, the underlying logic of web scraping are the same. The same strategies can be applied using any languages including R.
+I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hartleybrody.com/guide-to-web-scraping/) by Hartley Brody. Though it uses Python libraries, the underlying logic of web scraping is the same. The same strategies can be applied using any languages including R.
 
-# Talbe of Contents
+I did some [web scraping projects in R](https://github.com/yusuzech/web-scraping-projects). I used many strategies as explained below and some scripts are very concise. If you don't know what to do with your web scraping project, you can get some ideas from the projects.
+
+# Table of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
     1. <a href="#rvest1">Useful Libraries and Resources</a>
-    1. <a href="#rvest2">Making Simple Requests</a>
-    1. <a href="#rvest3">Inspecting Response</a>
-    1. <a href="#rvest4">Extracting Elements from HTML</a>
-    1. <a href="#rvest5">Storing Data in R</a>
+    2. <a href="#rvest2">Making Simple Requests</a>
+    3. <a href="#rvest3">Inspecting Response</a>
+    4. <a href="#rvest4">Extracting Elements from HTML</a>
+    5. <a href="#rvest5">Storing Data in R</a>
         1. <a href="#rvest5.1">Storing Data as list</a>
-        1. <a href="#rvest5.2">Storing Data as data.frame</a>
-    1. <a href="#rvest6">Saving Data to disk</a>
+        2. <a href="#rvest5.2">Storing Data as data.frame</a>
+    6. <a href="#rvest6">Saving Data to disk</a>
         1. <a href="#rvest6.1">Saving Data to csv</a>
-        1. <a href="#rvest6.2">Saving Data to SQLite Database</a>
-    1. <a href="#rvest7">More Advanced Topics</a>
+        2. <a href="#rvest6.2">Saving Data to SQLite Database</a>
+    7. <a href="#rvest7">More Advanced Topics</a>
         1. <a href="#rvest7.1">Javascript Heavy Websites</a>
-        1. <a href="#rvest7.2">Content Inside iFrames</a>
-        1. <a href="#rvest7.3">Sessions and Cookies</a>
-        1. <a href="#rvest7.4">Delays and Backing Off</a>
-        1. <a href="#rvest7.5">Spoofing the User Agent</a>
-        1. <a href="#rvest7.6">Using Proxy Servers</a>
-        1. <a href="#rvest7.7">Setting Timeouts</a>
-        1. <a href="#rvest7.8">Handling Network Errors</a>
-1. <a href="#rselenium">Web Scraping using Rselenium</a>
+        2. <a href="#rvest7.2">Content Inside iFrames</a>
+        3. <a href="#rvest7.3">Sessions and Cookies</a>
+        4. <a href="#rvest7.4">Delays and Backing Off</a>
+        5. <a href="#rvest7.5">Spoofing the User Agent</a>
+        6. <a href="#rvest7.6">Using Proxy Servers</a>
+        7. <a href="#rvest7.7">Setting Timeouts</a>
+        8. <a href="#rvest7.8">Handling Network Errors</a>
+2. <a href="#rselenium">Web Scraping using Rselenium</a>
     1. <a href="#rselenium1">Useful Libraries and Resources</a>
 
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
@@ -62,7 +64,7 @@ There are many tutorials available online; these are what I found to be most use
 
 **Functions and classes in rvest/httr:**
 
-Sometimes you may get confused about all the functions and classes you will have. You can review this file at the moment.
+Sometimes you may get confused about all the functions and classes you have. You can review this file at the moment.
 ![](resources/functions_and_classes.png)
 
 
@@ -118,7 +120,7 @@ content_parsed <- content(my_session$response,as = "parsed")
 
 \*\*note:
 
-Content maybe parsed incorrectly sometimes. For those situations, you can parse the content to text or raw and use other libraries or functions to parse it correctly.
+Content may be parsed incorrectly sometimes. For those situations, you can parse the content to text or raw and use other libraries or functions to parse it correctly.
 
 Search for specific string:
 
@@ -144,7 +146,7 @@ my_structure <- html_structure(content_parsed)
 
 ## 1.4. <a name="rvest4">Extracting Elements from HTML</a>
 
-Using regular expression to scrape HTML is not a very good idea, but it does have its usage like scraping all emails from websites, there is a detailed discussion about this topic on [stackoverflow](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags).  
+Using the regular expression to scrape HTML is not a very good idea, but it does have its usage like scraping all emails from websites, there is a detailed discussion about this topic on [stackoverflow](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags).  
 
 **Using rvest:**
 
@@ -180,7 +182,7 @@ rvest can return a vector of elements or even table of elements, so it's easy to
 
 ### 1.5.1. <a name="rvest5.1">Storing Data as list</a>
 
-Normally, rvest can return a vector, so it's very easy to store it.
+Usually, rvest can return a vector, so it's very easy to store it.
 
 ```r
 my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
@@ -218,11 +220,11 @@ dbDisconnect(conn = connection)
 
 ## 1.7. <a name="rvest7">More Advanced Topics</a>
 
-rvest and httr package provides some very useful functions, but they lack the function of:
+rvest and httr package provides some handy functions, but they lack the function of:
 
 + prevent errors from breaking loops
 + auto retry requests
-+ keep record of failed requests
++ keep the record of failed requests
 
 So I wrote a wrapper function on html_session which can deal with the issues above and make web scraping scripts much more robust. The function and usage can be found in this [repository](https://github.com/yusuzech/r-web-scraping-template). 
 
@@ -233,22 +235,22 @@ For javascript heavy websites, there are three possible solutions:
 
 1. Execute javascript in R
 2. Use Developer tools(e.g. [Network in Chrome](https://developers.google.com/web/tools/chrome-devtools/network-performance/))
-3. Using Rselenium or other web driver
+3. Using Rselenium or other web drivers
 
-There are pros and cons for each method:  
-1. Executing Javascript in R is the most difficult one, since it requires some knowledge of Javascript, but it makes web-scraping javascript heavy websites possible with rvest.  
-2. Using Developer tools is not difficult. The pro is that you only need to learn some examples and you can then work on it by yourself. The con is that if the website structure gets more completed, it require more knowledge of HTTP.
-3. The Rselenium is absolutely the easiest solution. The pro is it's easy to learn and use. The con is that it can be unstable sometimes and related resources is very limited online. In many situations, you may need to refer to python codes with selenium package.
+There are pros and cons of each method:  
+1. Executing Javascript in R is the most difficult one since it requires some knowledge of Javascript, but it makes web-scraping javascript heavy websites possible with rvest.  
+2. Using Developer tools is not difficult. The pro is that you only need to learn some examples and you can then work on it by yourself. The con is that if the website structure gets more completed, it requires more knowledge of HTTP.
+3. The Rselenium is absolutely the easiest solution. The pro is it's easy to learn and use. The con is that it can be unstable sometimes and related resources are very limited online. In many situations, you may need to refer to python codes with selenium package.
 
 #### 1.Execute javascript
 
-I'm not very familiar with Javascript, I learnt how to use it with this [post](https://datascienceplus.com/scraping-javascript-rendered-web-content-using-r/) 
+I'm not very familiar with Javascript, and I learned how to use it with this [post](https://datascienceplus.com/scraping-javascript-rendered-web-content-using-r/) 
 
 #### 2.Use Developer tools
 
-I learnt this trick fomr Hartley's blog, the following section are copied from his [post](https://blog.hartleybrody.com/web-scraping-cheat-sheet/):
+I learned this trick from Hartley's blog; the following section is quoted from his [post](https://blog.hartleybrody.com/web-scraping-cheat-sheet/):
 
->Contrary to popular belief, you do not need any special tools to scrape websites that load their content via Javascript. In order for the information to get from their server and show up on a page in your browser, that information had to have been returned in an HTTP response somewhere.
+>Contrary to popular belief, you do not need any special tools to scrape websites that load their content via Javascript. For the information to get from their server and show up on a page in your browser, that information had to have been returned in an HTTP response somewhere.
 >
 >It usually means that you won’t be making an HTTP request to the page’s URL that you see at the top of your browser window, but instead you’ll need to find the URL of the AJAX request that’s going on in the background to fetch the data from the server and load it into the page.
 >
@@ -256,7 +258,7 @@ I learnt this trick fomr Hartley's blog, the following section are copied from h
 >
 >Once you find the AJAX request that returns the data you’re hoping to scrape, then you can make your scraper send requests to this URL, instead of to the parent page’s URL. If you’re lucky, the response will be encoded with JSON which is even easier to parse than HTML.
 
-So, as Hartley said, basically, everything displayed on your browser must be sent to you through JSON,HTML or other formats. What you need to do is to capture this file. 
+So, as Hartley said, basically, everything displayed on your browser must be sent to you through JSON, HTML or other formats. What you need to do is to capture this file. 
 
 The following link shows how to do this:
 
@@ -264,18 +266,18 @@ The following link shows how to do this:
 
 Rselenium launches a Chrome/Firefox/IE browser where you can simulate human actions like clicking on links, scrolling up or down.  
 
-It is a very convenient tool and it will render JavaScript and Interactive content automatically, so you don't need to worry about the complex HTTP and AJAX stuff. But there are also some limitations to it:  
+It is a very convenient tool, and it renders JavaScript and Interactive content automatically, so you don't need to worry about the complex HTTP and AJAX stuff. However, there are also some limitations to it:  
 
 1. The first limitation is that:  it is very slow. Depending on the complexity of the websites, it could take seconds to render a single page while using httr/rvest takes less than one second. It is fine if you only want to scrape several hundred pages. However, if you want scrape thousands or ten thousands of pages, then the speed will become an issue.
-2. The second limitation is that: There is little online resources on Rselenium. In many situations, you can't find related posts on Stack Overflow that solve your problem. You may need to refer to Python/Java Selenium posts for answers and sometimes answers can't be applied in R.
+2. The second limitation is that: There are little online resources on Rselenium. In many situations, you can't find related posts on Stack Overflow that solve your problem. You may need to refer to Python/Java Selenium posts for answers, and sometimes answers can't be applied in R.
 
-More detailed usage will be explained in **Web Scraping using Rselenium**.
+More detailed usage is explained in **Web Scraping using Rselenium**.
 
 ### 1.7.2. <a name="rvest7.2">Content Inside iFrames</a>
 
-Iframes are other websites imbedded in the websites you are viewing as explained on [Wikipedia](https://en.wikipedia.org/wiki/HTML_element#Frames):
+Iframes are other websites embedded in the websites you are viewing as explained on [Wikipedia](https://en.wikipedia.org/wiki/HTML_element#Frames):
 
-> Frames allow a visual HTML Browser window to be split into segments, each of which can show a different document. This can lower bandwidth use, as repeating parts of a layout can be used in one frame, while variable content is displayed in another. This may come at a certain usability cost, especially in non-visual user agents,[[51\]](https://en.wikipedia.org/wiki/HTML_element#cite_note-58) due to separate and independent documents (or websites) being displayed adjacent to each other and being allowed to interact with the same parent window. Because of this cost, frames (excluding the `<iframe>` element) are only allowed in HTML 4.01 Frame-set. Iframes can also hold documents on different servers. In this case the interaction between windows is blocked by the browser. 
+> Frames allow a visual HTML Browser window to be split into segments, each of which can show a different document. This can lower bandwidth use, as repeating parts of a layout can be used in one frame, while variable content is displayed in another. This may come at a certain usability cost, especially in non-visual user agents,[[51\]](https://en.wikipedia.org/wiki/HTML_element#cite_note-58) due to separate and independent documents (or websites) being displayed adjacent to each other and being allowed to interact with the same parent window. Because of this cost, frames (excluding the `<iframe>` element) are only allowed in HTML 4.01 Frame-set. Iframes can also hold documents on different servers. In this case, the interaction between windows is blocked by the browser. 
 
 
 
@@ -284,8 +286,8 @@ Therefore, to extract content in an iframe, you need to find the link to that HT
 ```r
 #example script
 link_to_iframe <- my_session("www.example.com") %>%
-	html_node("css to locate the iframe") %>%
-	html_attr("src")
+    html_node("css to locate the iframe") %>%
+    html_attr("src")
 #make another request to the iframe and use this session to extract information
 iframe_session <- html_session(link_to_iframe)
 ```
@@ -375,15 +377,15 @@ for(my_url in my_urls){
 
 ### 1.7.5. <a name="rvest7.5">Spoofing the User Agent</a>
 
-**First of all, what is an user agent?**
+**First of all, what is a user agent?**
 
 > In computing, a user agent is software (a software agent) that is acting on behalf of a user. One common use of the term refers to a web browser telling a website information about the browser and operating system. This allows the website to customize content for the capabilities of a particular device, but also raises privacy issues.
 
-In short, user agent is a string that identifies you, you can search ""most popular browser user agents"" on google to get a rough idea.
+In short, a user agent is a string that identifies you, and you can search "most popular browser user agents" on google to get a rough idea.
 
 **So why should I use spoof user agent?**  
 
-* You want to make your scraper look like a real user instead of a script. Some websites even don't allow uncommon user agent to access.
+* You want to make your scraper look like a real user instead of a script. Some websites even don't allow an uncommon user agent to access.
 
 ```R
 library(rvest)
@@ -408,9 +410,9 @@ seesion_with_ua <- html_session("https://scrapethissite.com/",user_agent(ua_stri
 
 ### 1.7.6. <a name="rvest7.6">Using Proxy Servers</a>
 
-Some server will automatically ban an IP if it sees abnormal traffic from that IP. The way to avoid it is to use proxies, so you can spread your requests among different IPs and reduce the chance of the server banning you. 
+Some servers automatically ban an IP if it sees abnormal traffic from that IP. The way to avoid it is to use proxies, so you can spread your requests among different IPs and reduce the chance of the server banning you. 
 
-Though there are many free proxies available, paid ones are usually more reliable. One provider I use is "Proxy Bonanza".
+Though there are many free proxies available, paid ones are usually more reliable. One provider I use is "Proxy Bonanza."
 
 Once you have free or paid proxies, you can use them when you make requests:
 
@@ -428,7 +430,7 @@ my_response <- GET("https://scrapethissite.com/",my_proxy)
 
 ### 1.7.7. <a name="rvest7.7">Setting Timeouts</a>
 
-Sometimes you may encounter slow connections and want to move to other jobs instead of waiting. You can set timeout if you don't receive response.    
+Sometimes you may encounter slow connections and want to move to other jobs instead of waiting. You can set timeout if you don't receive a response.    
 
 ```R
 library(rvest)
