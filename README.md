@@ -8,7 +8,11 @@ This cheat sheet contains many examples with real websites in [example_script](h
 
 I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hartleybrody.com/guide-to-web-scraping/) by Hartley Brody. Though it uses Python libraries, the underlying logic of web scraping is the same. The same strategies can be applied using any languages including R.
 
+<<<<<<< HEAD
 I did some [web scraping projects in R](https://github.com/yusuzech/web-scraping-projects). I used many strategies as explained below and some scripts are very concise. If you don't know what to do with your web scraping project, you can get some ideas from the projects.
+=======
+I did some [web scraping projects in R](https://github.com/yusuzech/web-scraping-projects). I used many stratigies as explained below and some scripts are very concise. If you don't know what to do with your web scraping project, you can definitely get some ideas from the projects.
+>>>>>>> 3316e977715c744d4bbe14fc24aed5a62138524b
 
 # Table of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
