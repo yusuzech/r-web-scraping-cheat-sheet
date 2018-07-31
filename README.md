@@ -10,7 +10,7 @@ I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hart
 
 I did some [web scraping projects in R](https://github.com/yusuzech/web-scraping-projects). I used many stratigies as explained below and some scripts are very concise. If you don't know what to do with your web scraping project, you can definitely get some ideas from the projects.
 
-# Talbe of Contents
+# Table of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
     1. <a href="#rvest1">Useful Libraries and Resources</a>
     1. <a href="#rvest2">Making Simple Requests</a>
