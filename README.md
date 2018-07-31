@@ -53,7 +53,7 @@ require(rvest)
 require(httr)
 ```
 
-There are many tutorials available online; these are what I found to be most useful:
+There are many resources available online; these are what I found to be the most useful:
 
 1. [Tutorial by Justin Law and Jordan Rosenblum](https://stat4701.github.io/edav/2015/04/02/rvest_tutorial/): web-scraping tutorial using rvest
 2. [Tutorial by  SAURAV KAUSHIK](https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/)  : web-scraping tutorial using rvest
