@@ -455,5 +455,5 @@ You can retry if an error occurs. For more details, you can check the following 
 
 https://stackoverflow.com/questions/20770497/how-to-retry-a-statement-on-error
 
-# 2. <a name="rselenium">Web Scraping using Rselenium</a>
+# 2. <a name="rselenium">Web Scraping using Rselenium(In Progress)</a>
 ## 2.1. <a name="rselenium1">Useful Libraries and Resources</a>
