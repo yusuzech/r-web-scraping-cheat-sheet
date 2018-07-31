@@ -64,7 +64,7 @@ There are many tutorials available online; these are what I found to be most use
 
 **Functions and classes in rvest/httr:**
 
-Sometimes you may get confused about all the functions and classes you have. You can review this file at the moment.
+Sometimes you may get confused about all the functions and classes you have. You can review this image at the moment.
 ![](resources/functions_and_classes.png)
 
 
