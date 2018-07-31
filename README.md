@@ -262,7 +262,14 @@ I learned this trick from Hartley's blog; the following section is quoted from h
 
 So, as Hartley said, basically, everything displayed on your browser must be sent to you through JSON, HTML or other formats. What you need to do is to capture this file. 
 
-The following link shows how to do this:
+I answered a couple of questions on Stack Overflow about scraping JavaScript rendered content. You may have the same problems as in the posts. Please check out the answers, and hope you get the ideas of how to use developer tools.
+
+https://stackoverflow.com/questions/50596714/how-to-scrap-a-jsp-page-in-r/50598032#50598032  
+https://stackoverflow.com/questions/50765111/hover-pop-up-text-cannot-be-selected-for-rvest-in-r/50769875#50769875  
+https://stackoverflow.com/questions/50900987/scraping-dl-dt-dd-html-data/50922733#50922733  
+https://stackoverflow.com/questions/50693362/unable-to-extract-thorough-data-using-rvest/50730204#50730204  
+https://stackoverflow.com/questions/50997094/trouble-reaching-a-css-node/50997121#50997121  
+https://stackoverflow.com/questions/50262108/scraping-javascript-rendered-content-using-r/50263349#50263349  
 
 #### 3.Using Rselenium or other web driver
 
