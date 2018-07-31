@@ -292,17 +292,166 @@ iframe_session <- html_session(link_to_iframe)
 
 
 
-Here is a tutorial to using [scrapethissite](https://blog.hartleybrody.com/web-scraping-cheat-sheet/#content-inside-iframes):
+Here is a tutorial about iframes using [scrapethissite](https://blog.hartleybrody.com/web-scraping-cheat-sheet/#content-inside-iframes):
 
-In this tutorial, we want to get information for each turtle: [**Tutorial Link**](example_script/iframe_tutorial.md)
+In this tutorial, we will get information embedded in an iframe: [**Tutorial Link**](example_script/iframe_tutorial.md)  
 
 
 
 ### 1.7.3. <a name="rvest7.3">Sessions and Cookies</a>
+
+`rvest::html_session()` creates a session automatically, you can use `jump_to()` and `follow_link` to navigate to other web pages using the same session.
+
+
+
+```r
+library(rvest)
+url1 <- "https://scrapethissite.com/"
+url2 <- "https://scrapethissite.com/pages/simple/"
+my_session <- html_session(url1)
+my_session <- my_session %>% jump_to(url2) # navigate to another url
+```
+
+
+
+you can check session history:
+
+
+
+```
+> session_history(my_session)
+  https://scrapethissite.com/
+- https://scrapethissite.com/pages/simple/
+```
+
+
+
+ you can access the cookies:
+
+```
+library(httr)
+cookies(my_session)
+```
+
+
+
 ### 1.7.4. <a name="rvest7.4">Delays and Backing Off</a>
+
+You can slow down your requests by pausing between requests:
+
+
+
+```R
+library(httr)
+for(my_url in my_urls){
+    response <- httr::GET(my_url)
+    #do something
+    Sys.sleep(5) # sleep 5 seconds
+}
+```
+
+
+
+You can also decide how you wait by measuring how long the site took to respond. So why should you do it, as Hartley says:
+
+> Some also recommend adding a backoff that’s proportional to how long the site took to respond to your request. That way if the site gets overwhelmed and starts to slow down, your code will automatically back off. 
+
+
+
+```R
+library(httr)
+for(my_url in my_urls){
+    t0 <- Sys.time()
+    response <- httr::GET(my_url)
+    t1 <- Sys.time()
+    #do something
+    response_delay <- as.numeric(t1-t0)
+    Sys.sleep(10*response_delay) # sleep 10 times longer than response_delay
+}
+
+```
+
+
+
 ### 1.7.5. <a name="rvest7.5">Spoofing the User Agent</a>
+
+**First of all, what is an user agent?**
+
+> In computing, a user agent is software (a software agent) that is acting on behalf of a user. One common use of the term refers to a web browser telling a website information about the browser and operating system. This allows the website to customize content for the capabilities of a particular device, but also raises privacy issues.
+
+In short, user agent is a string that identifies you, you can search ""most popular browser user agents"" on google to get a rough idea.
+
+**So why should I use spoof user agent?**  
+
+* You want to make your scraper look like a real user instead of a script. Some websites even don't allow uncommon user agent to access.
+
+```R
+library(rvest)
+my_session <- html_session("https://scrapethissite.com/")
+# if you don't use custom user agent, your user agent will be something like:
+# RUN: my_session$response$request$options$useragent
+"libcurl/7.59.0 r-curl/3.2 httr/1.3.1"
+```
+
+**So how can I spoof it?**
+
+```R
+library(rvest)
+library(httr)
+#1.spoof it with common user agent
+ua <- user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36")
+seesion_with_ua <- html_session("https://scrapethissite.com/",ua)
+#2.fill your contact information in user agent if you want the website owner to contact you
+ua_string <- "Contact me at xyz123@gmail.com"
+seesion_with_ua <- html_session("https://scrapethissite.com/",user_agent(ua_string))
+```
+
 ### 1.7.6. <a name="rvest7.6">Using Proxy Servers</a>
+
+Some server will automatically ban an IP if it sees abnormal traffic from that IP. The way to avoid it is to use proxies, so you can spread your requests among different IPs and reduce the chance of the server banning you. 
+
+Though there are many free proxies available, paid ones are usually more reliable. One provider I use is "Proxy Bonanza".
+
+Once you have free or paid proxies, you can use them when you make requests:
+
+```R
+library(rvest)
+library(httr)
+my_proxy <- use_proxy(url="http://example.com",
+                     user_name = "myusername",
+                     password = "mypassword",
+                     auth = "one of basic, digest, digest_ie, gssnegotiate, ntlm, any")
+#use it in html_session(),POST() or GET()
+my_session <- html_session("https://scrapethissite.com/",my_proxy)
+my_response <- GET("https://scrapethissite.com/",my_proxy)
+```
+
 ### 1.7.7. <a name="rvest7.7">Setting Timeouts</a>
+
+Sometimes you may encounter slow connections and want to move to other jobs instead of waiting. You can set timeout if you don't receive response.    
+
+```R
+library(rvest)
+library(httr)
+my_session <- html_session("https://scrapethissite.com/",time(5)) # if you don't receive reponse within 5 seconds, it will throw an error
+
+#you can use try() or tryCatch() to continue if the error occured
+for(my_url in my_urls){
+    try(GET(my_url,timeout(5)))
+}
+```
+
+For detailed usage of `try()` and `tryCatch()`, you can check the following posts:
+
+https://stackoverflow.com/questions/12193779/how-to-write-trycatch-in-r
+
 ### 1.7.8. <a name="rvest7.8">Handling Network Errors</a>
+
+You can use `try()` or `tryCatch()` to handle unpredictable network issues.
+
+You can retry if an error occurs. For more details, you can check the following posts:
+
+https://stackoverflow.com/questions/20770497/how-to-retry-a-statement-on-error
+
 # 2. <a name="rselenium">Web Scraping using Rselenium</a>
 ## 2.1. <a name="rselenium1">Useful Libraries and Resources</a>
