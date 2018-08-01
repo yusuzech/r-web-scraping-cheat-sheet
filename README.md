@@ -68,6 +68,7 @@ There are many resources available online; these are what I found to be the most
 Sometimes you may get confused about all the functions and classes you have. You can review this image at the moment.
 ![](resources/functions_and_classes.png)
 
+\*\* Please notice that: somtimes response could be JSON or other formats instead of HTML. In those cases you need other functions to parse the content(e.g. jsonlite::fromJSON() to parse a JSON string to a list).
 
 
 ## 1.2. <a name="rvest2">Making Simple Requests</a>
