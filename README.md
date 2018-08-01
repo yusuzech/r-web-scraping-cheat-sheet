@@ -78,7 +78,7 @@ rvest provides two ways of making request: `read_html()` and `html_session()`
 
 Reading a url:
 
-```r
+```R
 #making GET request andparse website into xml document
 pagesource <- html_read("http://example.com/page")
 
@@ -90,7 +90,7 @@ response <- my_session$response
 
 Alternatively, GET and POST method are available in the httr package.
 
-```r
+```R
 library(httr)
 response <- GET("http://example.com/page")
 #or
@@ -102,14 +102,14 @@ response <- POST("http://example.com/page",
 
 Check status code:
 
-```r
+```R
 status_code(my_session)
 status_code(response)
 ```
 
 Get response and content:
 
-```r
+```R
 #response
 response <- my_session$response
 #retrieve content as raw
@@ -126,7 +126,7 @@ Content may be parsed incorrectly sometimes. For those situations, you can parse
 
 Search for specific string:
 
-```r
+```R
 library(stringr)
 #regular expression can also be used here
 if(str_detect(content_text,"blocked")){
@@ -136,13 +136,13 @@ if(str_detect(content_text,"blocked")){
 
 check content type:
 
-```r
+```R
 response$headers$`content-type`
 ```
 
 check html structure:
 
-```r
+```R
 my_structure <- html_structure(content_parsed)
 ```
 
@@ -156,25 +156,25 @@ I will scrape https://scrapethissite.com/ for demonstration, since it has static
 
 For the purpose of extracting elements, using `read_html()` or `html_session()` are both fine. When using `read_html()`, it returns a xml_document. When using `html_session()`, it creates a session and the response is included.
 
-```r
+```R
 my_session <- html_session("https://scrapethissite.com/pages/simple/")
 ```
 
 Look for nodes:
 
-```r
+```R
 my_nodes <- my_session %>% html_nodes(".country")
 ```
 
 Look for attributes:
 
-```r
+```R
 my_attributes <- my_session %>% html_nodes(".country-capital") %>% html_attr("class")
 ```
 
 Look for texts:
 
-```r
+```R
 my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
 ```
 
@@ -186,7 +186,7 @@ rvest can return a vector of elements or even table of elements, so it's easy to
 
 Usually, rvest can return a vector, so it's very easy to store it.
 
-```r
+```R
 my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
 ```
 
@@ -194,7 +194,7 @@ my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
 
 We can concatenate vectors in a table or using `html_table()` to extract a HTML table directly into a data.frame.
 
-```r
+```R
 my_country <- my_session %>% html_nodes(".country-name") %>% html_text()
 my_capitals <- my_session %>% html_nodes(".country-capital") %>% html_text()
 my_table <- data.frame(country = my_country, capital = my_capitals)
@@ -205,7 +205,7 @@ my_table <- data.frame(country = my_country, capital = my_capitals)
 
 If the data is already stored as a data.frame:
 
-```r
+```R
 write.csv(my_table,file="my_table.csv")
 ```
 
@@ -213,7 +213,7 @@ write.csv(my_table,file="my_table.csv")
 
 After creating the database "webscrape.db":
 
-```r
+```R
 library(RSQLite)
 connection <- dbConnect(SQLite(),"webscrape.db")
 dbWriteTable(conn = connection,name = "country_capital",value = my_table)
@@ -293,7 +293,7 @@ Iframes are other websites embedded in the websites you are viewing as explained
 
 Therefore, to extract content in an iframe, you need to find the link to that HTML.
 
-```r
+```R
 #example script
 link_to_iframe <- my_session("www.example.com") %>%
     html_node("css to locate the iframe") %>%
@@ -316,7 +316,7 @@ In this tutorial, we will get information embedded in an iframe: [**Tutorial Lin
 
 
 
-```r
+```R
 library(rvest)
 url1 <- "https://scrapethissite.com/"
 url2 <- "https://scrapethissite.com/pages/simple/"
@@ -330,7 +330,7 @@ you can check session history:
 
 
 
-```
+```R
 > session_history(my_session)
   https://scrapethissite.com/
 - https://scrapethissite.com/pages/simple/
@@ -340,7 +340,7 @@ you can check session history:
 
  you can access the cookies:
 
-```
+```R
 library(httr)
 cookies(my_session)
 ```
