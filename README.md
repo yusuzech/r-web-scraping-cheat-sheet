@@ -38,7 +38,7 @@ In [some web scraping projects I did in R](https://github.com/yusuzech/web-scrap
     3. <a href="#rselenium3">Extract Texts from Web Pages</a>
        1. <a href="#rselenium3.1">Extract Texts using Rselenium</a>
        2. <a href="#rselenium3.2">Extract Texts using rvest</a>
-    4. <a href = "#rselneium4>miscellanea</a>
+    4. <a href = "#rselneium4">miscellanea</a>
        1. <a href="#rselenium4.1">Javascript</a>
        2. <a href="#rselenium4.2">Iframe</a>
        3. <a href="#rselenium4.3">Comparison for Web Scraping Using Rselenium and rvest</a>
