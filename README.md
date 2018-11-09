@@ -8,6 +8,8 @@ I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hart
 
 In addition, web-scraping using other libraries such as Rselenium and Rcrawler are included in later chapters. They have their own advantages and disadvantages and it will be explained at the end of each chapter.
 
+Please post issues [here](https://github.com/yusuzech/r-web-scraping-cheat-sheet/issues) if you find any errors or have any recommendations.
+
 # Table of Contents
 1. <a href="#rvest">Web Scraping using rvest and httr</a>
     1. <a href="#rvest1">Useful Libraries and Resources</a>
