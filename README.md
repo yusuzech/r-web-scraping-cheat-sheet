@@ -478,7 +478,49 @@ You can retry if an error occurs. For more details, you can check the following 
 
 https://stackoverflow.com/questions/20770497/how-to-retry-a-statement-on-error
 
-### 1.7.9. <a name="rvest7.9">Downloading Files</a>
+### 1.7.9. <a name="rvest7.9">Downloading Files</a>  
+
+Most of the times, the purpose of web scrapping is to extract texts from web pages. But there are also scenarios that you want to save images or the entire web page.
+
+**Downloading files using `download.file()`**
+
+`download.file()` is a built-in function in R and it's very easy to use. But it doesn't support extra configurations such as proxies or user agents.
+
+```R
+#Download a web page
+my_url <- "https://scrapethissite.com/"
+download.file(url = my_url, # required: provide url 
+              destfile = "test.html", # required: path and name for downloaded file
+              quiet = T, # optional: whether to suppress messages
+              mode = "w") #optional: default to "w", switch to other modes if file is garbled
+
+#Download a image
+image_url <- "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/GreenSeaTurtle-2.jpg/200px-GreenSeaTurtle-2.jpg"
+download.file(image_url,"turtle1.jpg",mode = "wb") #mode must be wb(binary) for images
+```
+
+
+
+**Downloading files using `writeBin()`**
+
+Another option is to use `writeBin()` function to download files. This function can write the content from  the response to a binary file.
+
+```R
+library(httr)
+#use writeBin() to write a html file
+my_url <- "https://scrapethissite.com/"
+response <- GET(my_url)
+writeBin(response$content,"test1.html")
+
+#downlaod images using `writeBin()`
+image_url <- "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/GreenSeaTurtle-2.jpg/200px-GreenSeaTurtle-2.jpg"
+response <- GET(image_url)
+writeBin(response$content,"turtle2.jpg")
+```
+
+
+
+****
 
 # 2. <a name="rselenium">Web Scraping using Rselenium(In Progress)</a>
 
