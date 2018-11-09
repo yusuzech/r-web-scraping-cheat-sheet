@@ -480,7 +480,7 @@ https://stackoverflow.com/questions/20770497/how-to-retry-a-statement-on-error
 
 ### 1.7.9. <a name="rvest7.9">Downloading Files</a>  
 
-Most of the times, the purpose of web scrapping is to extract texts from web pages. But there are also scenarios that you want to save images or the entire web page.
+Most of the times, the purpose of web scrapping is to extract texts from web pages. But there are also scenarios that you want to save images,web pages or other files.
 
 **Downloading files using `download.file()`**
 
