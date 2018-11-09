@@ -6,8 +6,6 @@ While Hartley uses python's requests and beautifulsoup libraries, this cheat she
 
 I also recommend the book [The Ultimate Guide to Web Scraping](https://blog.hartleybrody.com/guide-to-web-scraping/) by Hartley Brody. Though it uses Python libraries, the underlying logic of web scraping is the same. The same strategies can be applied using any languages including R.
 
-In [some web scraping projects I did in R](https://github.com/yusuzech/web-scraping-projects), I used many stratigies as explained in the contents. If you don't know what to do with your web scraping project, you can definitely get some ideas from the projects.
-
 In addition, web-scraping using other libraries such as Rselenium and Rcrawler are included in later chapters. They have their own advantages and disadvantages and they will be explained at the end of each chapter.
 
 # Table of Contents
