@@ -31,6 +31,18 @@ In [some web scraping projects I did in R](https://github.com/yusuzech/web-scrap
         8. <a href="#rvest7.8">Handling Network Errors</a>
 2. <a href="#rselenium">Web Scraping using Rselenium</a>
     1. <a href="#rselenium1">Useful Libraries and Resources</a>
+    2. <a href="#rselenium2">Basics of Web Browsing using Rselenium</a>
+       1. <a href="#rselenium2.1">Navigate to Different Web Pages</a>
+       2. <a href="#rselenium2.2">Search by id,CSS, xpath, ...</a>
+       3. <a href = "#rselenium2.3">Simulate Clicks, Key Presses and Enter Texts</a>
+    3. <a href="#rselenium3">Extract Texts from Web Pages</a>
+       1. <a href="#rselenium3.1">Extract Texts using Rselenium</a>
+       2. <a href="#rselenium3.2">Extract Texts using rvest</a>
+    4. <a href = "#rselneium4>miscellanea</a>
+       1. <a href="#rselenium4.1">Javascript</a>
+       2. <a href="#rselenium4.2">Iframe</a>
+       3. <a href="#rselenium4.3">Comparison for Web Scraping Using Rselenium and rvest</a>
+4. <a href="#rcrawler">Web Scraping using Rcrawler</a>
 
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
 ## 1.1. <a name="rvest1">Useful Libraries and Resources</a>
@@ -464,4 +476,28 @@ You can retry if an error occurs. For more details, you can check the following 
 https://stackoverflow.com/questions/20770497/how-to-retry-a-statement-on-error
 
 # 2. <a name="rselenium">Web Scraping using Rselenium(In Progress)</a>
+
 ## 2.1. <a name="rselenium1">Useful Libraries and Resources</a>
+
+## 2.2 <a name="rselenium2">Basics of Web Browsing using Rselenium</a>
+### 2.2.1. <a name = "rselenium2.1">Navigate to Different Web Pages</a>
+
+### 2.2.2. <a name = "rselenium2.2">Search by id,CSS, xpath, ...</a>
+
+### 2.2.3. <a name = "rselenium2.3">Simulate Clicks, Key Presses and Enter Texts</a>
+
+## 2.3. <a name="rselenium3">Extract Texts from Web Pages</a>
+
+### 2.3.1. <a name="rselenium3.1">Extract Texts using Rselenium</a>
+
+### 2.3.2. <a name="rselenium3.2">Extract Texts using rvest</a>
+
+## 2.4. <a name = "rselneium4">miscellanea</a>
+
+### 2.4.1. <a name="rselenium4.1">Javascript</a>
+
+### 2.4.2. <a name="rselenium4.2">Iframe</a>
+
+### 2.4.3. <a name="rselenium4.3">Comparison for Web Scraping Using Rselenium and rvest</a>
+
+# 3. <a name="rcrawler">Web Scraping using Rcrawler</a>
