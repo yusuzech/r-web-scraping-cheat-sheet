@@ -32,6 +32,8 @@ Please post issues [here](https://github.com/yusuzech/r-web-scraping-cheat-sheet
         7. <a href="#rvest7.7">Setting Timeouts</a>
         8. <a href="#rvest7.8">Handling Network Errors</a>
         9. <a href="#rvest7.9">Downloading Files</a>
+        10. <a href="#rvest7.10">Logins and Sessions</a>
+        11. <a href="#rvest7.11">Web Scraping in Parallel</a>
 2. <a href="#rselenium">Web Scraping using Rselenium</a>
     1. <a href="#rselenium1">Useful Libraries and Resources</a>
     2. <a href="#rselenium2">Basics of Web Browsing using Rselenium</a>
@@ -45,7 +47,7 @@ Please post issues [here](https://github.com/yusuzech/r-web-scraping-cheat-sheet
        1. <a href="#rselenium4.1">Javascript</a>
        2. <a href="#rselenium4.2">Iframe</a>
        3. <a href="#rselenium4.3">Comparison between Web Scraping Using Rselenium and rvest</a>
-4. <a href="#rcrawler">Web Scraping using Rcrawler</a>
+3. <a href="#rcrawler">Web Scraping using Rcrawler</a>
 
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
 ## 1.1. <a name="rvest1">Useful Libraries and Resources</a>
@@ -518,11 +520,13 @@ response <- GET(image_url)
 writeBin(response$content,"turtle2.jpg")
 ```
 
+### 1.7.10. <a name="rvest7.10">Logins and Sessions</a>(in progress)
 
+### 1.7.11. <a name="rvest7.11">Web Scraping in Parallel</a>
 
 ****
 
-# 2. <a name="rselenium">Web Scraping using Rselenium(In Progress)</a>
+# 2. <a name="rselenium">Web Scraping using Rselenium</a>
 
 ## 2.1. <a name="rselenium1">Useful Libraries and Resources</a>
 
