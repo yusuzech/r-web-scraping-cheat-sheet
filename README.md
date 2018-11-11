@@ -357,7 +357,7 @@ you can check session history:
 
 ```R
 library(httr)
-cookies(my_session)
+cookies(my_session) #cookies are saved in a table
 ```
 
 
@@ -503,7 +503,7 @@ download.file(image_url,"turtle1.jpg",mode = "wb") #mode must be wb(binary) for 
 
 
 
-**Downloading files using `writeBin()`**
+Downloading files using `writeBin()`**
 
 Another option is to use `writeBin()` function to download files. This function can write the content from  the response to a binary file.
 
@@ -520,13 +520,83 @@ response <- GET(image_url)
 writeBin(response$content,"turtle2.jpg")
 ```
 
-### 1.7.10. <a name="rvest7.10">Logins and Sessions</a>(in progress)
+### 1.7.10. <a name="rvest7.10">Logins and Sessions</a>
+
+Sometimes you need to log in to access certain content. You can do it using rvest and httr. You can also save your cookies so you don't need to log in every time.
+
+**Log in using rvest:**
+
+```R
+library(rvest)
+url <- "https://example.com/login"
+my_session <- html_session(url) #Create a persistant session
+unfilled_forms <- html_form(my_session) # find all forms in the web page
+login_form <- unfilled_forms[[1]] # select the form you need to fill
+filled_form <- set_values(login_form,username="myusername",password="mypassword") # fill the form
+login_session <- submit_form(my_session,filled_form) # Now you're logged in
+```
+
+There is also a built-in [demo](https://github.com/hadley/rvest/blob/master/demo/united.R) for logins in rvest.
+
+**Using the session**
+
+`html_session()` simulates a session in an html browser, you can navigate to other pages using the same session with same cookies.
+
+To stay in the same session, you can use `jump_to()` and `follow_link()`:
+
+```R
+library(rvest)
+url <- "www.example.com"
+my_session <- html_session(url) # create a session
+my_session1 <- my_session %>% jump_to("www.example.com/page1") # go to another web page using the same session
+my_session2 <- my_session %>% follow_link(css = "p a")
+```
+
+
+
+You can also stay in the same session by using cookies: 
+
+```R
+library(rvest)
+library(httr)
+url <- "http://ww.example.com"
+my_session <- html_session(url) # create a session
+my_cookies_table <- cookies(my_session) # get the cookies as a table
+my_cookies <- my_cookies_table$value %>% setNames(my_cookies_table$name) # save the cookies as a named vector that you can use in your requests
+new_session <- html_session(url,set_cookies(my_cookies)) # making requests using the same cookies/session
+```
 
 ### 1.7.11. <a name="rvest7.11">Web Scraping in Parallel</a>
 
+To speed up web scraping process, you may want to do it in parallel. To achieve this goal, you can use [`doParallel`](https://cran.r-project.org/web/packages/doParallel/index.html) package or [`Rcrawler`](https://github.com/salimk/Rcrawler) package. The later package has parallel web scraping as a built in feature, it also has many other great features and the developers are adding even more.   For this part, we are focusing on `doParallel`.
+
+```R
+library(rvest)
+library(doParallel)
+#assume we have a list of urls
+#urls <- c("url1","url2,...")
+cl <- makeCluster(detectCores()-1) #using max cores - 1 for parallel processing
+registerDoParallel(cl) #register cores
+
+# use foreach() %dopar%{} to make requests and parese texts in parallel
+result <- foreach(i = seq_along(urls),
+                  .packages = "rvest",
+                  .combine = "c",
+                  .errorhandling='pass') %dopar% {
+                      text <- html_session(urls[i]) %>% 
+                          html_nodes("css") %>%
+    					  html_text()
+                      return(text)
+                  }
+```
+
+In this [example](resources/rvest_parallel.md), it compares the speed between  `foreach` and `for` loop.
+
+Also, you need to be aware of that: as you are making more concurrent requests, you are much more likely to get banned. So remember to use proxies or reduce the speed of requests. 
+
 ****
 
-# 2. <a name="rselenium">Web Scraping using Rselenium</a>
+# 2. <a name="rselenium">Web Scraping using Rselenium</a>(In Progress)
 
 ## 2.1. <a name="rselenium1">Useful Libraries and Resources</a>
 
