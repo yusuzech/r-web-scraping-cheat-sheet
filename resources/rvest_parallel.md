@@ -1,4 +1,4 @@
-# Speed Comparison between `foreach` and `doparallel`
+# Speed Comparison between `for` and `foreach` loop
 
 
 
