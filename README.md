@@ -501,7 +501,7 @@ download.file(image_url,"turtle1.jpg",mode = "wb") #mode must be wb(binary) for 
 
 
 
-Downloading files using `writeBin()`**
+**Downloading files using `writeBin()`**
 
 Another option is to use `writeBin()` function to download files. This function can write the content from  the response to a binary file.
 
