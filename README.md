@@ -458,7 +458,7 @@ Sometimes you may encounter slow connections and want to move to other jobs inst
 ```R
 library(rvest)
 library(httr)
-my_session <- html_session("https://scrapethissite.com/",time(5)) # if you don't receive reponse within 5 seconds, it will throw an error
+my_session <- html_session("https://scrapethissite.com/",timeout(5)) # if you don't receive reponse within 5 seconds, it will throw an error
 
 #you can use try() or tryCatch() to continue if the error occured
 for(my_url in my_urls){
