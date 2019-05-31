@@ -46,7 +46,6 @@ Please post issues [here](https://github.com/yusuzech/r-web-scraping-cheat-sheet
     4. <a href = "#rselneium4">miscellanea</a>
        1. <a href="#rselenium4.1">Javascript</a>
        2. <a href="#rselenium4.2">Iframe</a>
-       3. <a href="#rselenium4.3">Comparison between Web Scraping Using Rselenium and rvest</a>
 3. <a href="#rcrawler">Web Scraping using Rcrawler</a>
 
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
@@ -777,7 +776,7 @@ for(element in elements){
 }
 ```
 
-*Go to Different URLs by Clicking:*
+*Go to Different URLs by Clicking Links:*
 
 ```R
 driver$navigate("http://books.toscrape.com/")
@@ -795,15 +794,83 @@ for(i in 1:length(elements)){
 
 **3. Simulating Text Input:**
 
+*Enter Text and Search*
+
+```R
+driver$navigate("https://www.google.com/")
+#selcet input box
+element <- driver$findElement(using = "css",'input[name="q"]')
+#send text to input box. don't forget to use `list()` when sending text
+element$sendKeysToElement(list("Web Scraping"))
+#select search button
+element <- driver$findElement(using = "css",'input[name="btnK"]')
+element$clickElement()
+```
 
 
-**4. Simulating Press and Release of Key Presses:**
+
+*Clear Input Box*
+
+```R
+driver$navigate("https://www.google.com/")
+#selcet input box
+element <- driver$findElement(using = "css",'input[name="q"]')
+element$sendKeysToElement(list("Web Scraping"))
+#clear input box
+element$clearElement()
+```
 
 
 
-**5. Simulating Logins:**
+**4. Logins:**
+
+Login is simple using RSelenium. Instead of doing post request, it's just a combination of sending texts to input boxes and click login button.
 
 
+
+```T
+driver$navigate("http://quotes.toscrape.com/login")
+#enter username
+element <- driver$findElement(using = "css","#username")
+element$sendKeysToElement(list("myusername"))
+#enter password
+element <- driver$findElement(using = "css","#password")
+element$sendKeysToElement(list("mypassword"))
+#click login button
+element <- driver$findElement(using = "css", 'input[type="submit"]')
+element$clickElement()
+```
+
+
+
+
+
+**5. Simulating Key and Button Presses:**
+
+You can also send keys to the browser, you can check all available keys by running `RSelenium::selKeys`.
+
+*Available Keys:*
+
+```R
+ [1] "null"         "cancel"       "help"         "backspace"    "tab"          "clear"        "return"       "enter"        "shift"        "control"     
+[11] "alt"          "pause"        "escape"       "space"        "page_up"      "page_down"    "end"          "home"         "left_arrow"   "up_arrow"    
+[21] "right_arrow"  "down_arrow"   "insert"       "delete"       "semicolon"    "equals"       "numpad_0"     "numpad_1"     "numpad_2"     "numpad_3"    
+[31] "numpad_4"     "numpad_5"     "numpad_6"     "numpad_7"     "numpad_8"     "numpad_9"     "multiply"     "add"          "separator"    "subtract"    
+[41] "decimal"      "divide"       "f1"           "f2"           "f3"           "f4"           "f5"           "f6"           "f7"           "f8"          
+[51] "f9"           "f10"          "f11"          "f12"          "command_meta"
+```
+
+
+
+*Send Key Combinations:*
+
+```R
+driver$navigate("https://scrapethissite.com/pages/ajax-javascript/#2015")
+Sys.sleep(2)
+# Press Control+A to select the entire page
+driver$findElement(using = "css","body")$sendKeysToElement(list(key="control","a"))
+
+```
 
 
 
@@ -812,14 +879,98 @@ for(i in 1:length(elements)){
 
 ### 2.3.1. <a name="rselenium3.1">Extracting Content using Rselenium</a>
 
+*Extract information from a single element:*
+
+use `findElment()` method to select a single matching element.
+
+```R
+driver$navigate("https://scrapethissite.com/pages/simple/")
+element <- driver$findElement(using = "css",".country-capital")
+# get element text
+element$getElementText()[[1]]
+#get element attribute value(get the value for class)
+element$getElementAttribute("class")[[1]]
+```
+
+
+
+*Extract information from a list of elements:*
+
+use `findElements()` method to select all matching elements.
+
+```R
+driver$navigate("https://scrapethissite.com/pages/simple/")
+Sys.sleep(2)
+elements <- driver$findElements(using = "css",".country-capital")
+# get all element text in for loop
+
+
+```
+
+
+
+
+
+`RSelenium` doesn't support vectorized calculation.So you need to use for loops, apply or map(in `purrr` package) as alternative to get lists of items.
+
+ 
+
 ### 2.3.2. <a name="rselenium3.2">Extracting Content using Parsed Page Source and `rvest`</a>
+
+Since the browser will execute JavaScript codes by default, you can use `RSelenium` as a tool to get the parsed content from webpages. In this way, you can benefit from the vectorized calculation in `rvest`.
+
+```
+library(rvest)
+driver$navigate("https://scrapethissite.com/pages/ajax-javascript/#2015")
+Sys.sleep(2)
+# get parsed page source
+parsed_pagesource <- driver$getPageSource()[[1]]
+# using rvest to extract information
+result <- read_html(parsed_pagesource) %>%
+    html_nodes(".film-title") %>%
+    html_text()
+```
+
+
 
 ## 2.4. <a name = "rselneium4">miscellanea</a>
 
 ### 2.4.1. <a name="rselenium4.1">Javascript</a>
 
+Congratulations, no more concerns about AJAX or JavaScript as the browser will parse everything for you!
+
 ### 2.4.2. <a name="rselenium4.2">Iframe</a>
 
-### 2.4.3. <a name="rselenium4.3">Comparison between Web Scraping Using Rselenium and rvest</a>
+Let's try to get all turtles family name in this [webpage](https://scrapethissite.com/pages/frames/), it doesn't work because the content is another webpage nested in the current one.
+
+```R
+driver$navigate("https://scrapethissite.com/pages/frames/")
+# select all turtles' name
+elements <- driver$findElements(using = "css",".family-name")
+print(elements)
+> list()
+```
+
+
+
+To read the content from inside iframe, we can use `switchToFrame` method.
+
+> switchToFrame(Id)
+> Change focus to another frame on the page. Id can be string|number|null|WebElement Object. If the Id is null, the server should switch to the page's default content.
+
+```R
+driver$navigate("https://scrapethissite.com/pages/frames/")
+# select iframe element
+element <- driver$findElement(using = "css","#iframe")
+#switch to the iframe
+driver$switchToFrame(element)
+
+elements <- driver$findElements(using = "css",".family-name")
+for (ele in elements){
+    print(ele$getElementText()[[1]])
+}
+#switch back to the default page
+driver$switchToFrame()
+```
 
 # 3. <a name="rcrawler">Web Scraping using Rcrawler</a>
