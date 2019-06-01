@@ -598,7 +598,7 @@ Also, you need to be aware of that: as you are making more concurrent requests, 
 
 ****
 
-# 2. <a name="rselenium">Web Scraping using Rselenium</a>(In Progress)
+# 2. <a name="rselenium">Web Scraping using Rselenium</a>
 
 ## 2.1. <a name="rselenium1">Why RSelenium</a>
 
@@ -828,7 +828,7 @@ Login is simple using RSelenium. Instead of doing post request, it's just a comb
 
 
 
-```T
+```R
 driver$navigate("http://quotes.toscrape.com/login")
 #enter username
 element <- driver$findElement(using = "css","#username")
@@ -879,9 +879,11 @@ driver$findElement(using = "css","body")$sendKeysToElement(list(key="control","a
 
 ### 2.3.1. <a name="rselenium3.1">Extracting Content using Rselenium</a>
 
-*Extract information from a single element:*
+You can use `findElement()` or `findElements` to extract single or multiple elements from page source.
 
-use `findElment()` method to select a single matching element.
+**1.  Extract text from a single element:**
+
+use `findElment()` method to select a single matching element, and use `getElementText()` method to extract text.
 
 ```R
 driver$navigate("https://scrapethissite.com/pages/simple/")
@@ -894,30 +896,71 @@ element$getElementAttribute("class")[[1]]
 
 
 
-*Extract information from a list of elements:*
+**2. Extract text from a list of elements:**
 
-use `findElements()` method to select all matching elements.
+`RSelenium` doesn't support vectorized calculation.So you need to use for loops, apply or map(in `purrr` package) as alternative to get lists of items.
+
+use `findElements()` method to select all matching elements, and use `getElementText()` method to extract text.
 
 ```R
 driver$navigate("https://scrapethissite.com/pages/simple/")
 Sys.sleep(2)
 elements <- driver$findElements(using = "css",".country-capital")
-# get all element text in for loop
+```
 
 
+
+*Use for loop to extract elements:*
+
+```R
+texts <- c()
+for(ele in elements){
+    texts <- append(texts,ele$getElementText()[[1]])
+}
+```
+
+
+
+*Use apply functions to extract elements:*
+
+```R
+# use lapply
+texts_lapply <- lapply(elements,function(x) x$getElementText()[[1]])
+# use sapply
+texts_sapply <- sapply(elements,function(x) x$getElementText()[[1]])
+```
+
+
+
+*Use map functions(using `purrr`) to extract elements:*
+
+```R
+library(purrr)
+# get result as a list
+texts_purrr_map <- map(elements,~ .x$getElementText()[[1]])
+# get result as a string vector
+texts_purrr_map_chr <- map_chr(elements,~ .x$getElementText()[[1]])
+```
+
+ 
+
+**3. Extract attribute(s) from a single element(s)**
+
+The usage is the same as extracting text from element(s), the only difference it that you need to use `getElementAttribute()` method.
+
+```R
+book_partial_links <- lapply(elements,function(x) x$getElementAttribute(attrName="href"))
 ```
 
 
 
 
 
-`RSelenium` doesn't support vectorized calculation.So you need to use for loops, apply or map(in `purrr` package) as alternative to get lists of items.
-
- 
-
 ### 2.3.2. <a name="rselenium3.2">Extracting Content using Parsed Page Source and `rvest`</a>
 
-Since the browser will execute JavaScript codes by default, you can use `RSelenium` as a tool to get the parsed content from webpages. In this way, you can benefit from the vectorized calculation in `rvest`.
+Since the browser will execute JavaScript codes by default, you can use `RSelenium` as a tool to get the parsed content from webpages. In this way, you can benefit from the vectorized calculation in `rvest`. 
+
+Another benefit of using `rvest` is that it runs much faster while extracting information from page source comparing to using `getElementText()` or `getElementAttribute()` method.
 
 ```
 library(rvest)
