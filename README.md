@@ -606,7 +606,7 @@ As mentioned in previous sections, in JavaScript heavy websites, the majority of
 
 
 
-[RSelenium](https://github.com/ropensci/RSelenium) makes use of [Selenium Web Driver](https://www.seleniumhq.org/projects/webdriver/) which simulates a browser(usually Chrome and Firefox) and renders web pages automatically, it will execute all the JavaScript codes for you so will get a parsed page source instead of unparsed one.
+[RSelenium](https://github.com/ropensci/RSelenium) makes use of [Selenium Web Driver](https://www.seleniumhq.org/projects/webdriver/) which simulates a browser(usually Chrome and Firefox) and renders web pages automatically, it will execute all the JavaScript codes for you so you will get a parsed page source instead of unparsed(raw) one.
 
 ### 2.1.1 <a name="rselenium1.1">Pros and Cons from Using RSelenium</a>
 
@@ -879,7 +879,7 @@ driver$findElement(using = "css","body")$sendKeysToElement(list(key="control","a
 
 ### 2.3.1. <a name="rselenium3.1">Extracting Content using Rselenium</a>
 
-You can use `findElement()` or `findElements` to extract single or multiple elements from page source.
+You can use `findElement()` or `findElements()` to extract single or multiple elements from page source.
 
 **1.  Extract text from a single element:**
 
