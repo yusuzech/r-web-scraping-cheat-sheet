@@ -962,7 +962,7 @@ Since the browser will execute JavaScript codes by default, you can use `RSeleni
 
 Another benefit of using `rvest` is that it runs much faster while extracting information from page source comparing to using `getElementText()` or `getElementAttribute()` method.
 
-```
+```R
 library(rvest)
 driver$navigate("https://scrapethissite.com/pages/ajax-javascript/#2015")
 Sys.sleep(2)
