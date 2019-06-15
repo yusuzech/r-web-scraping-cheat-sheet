@@ -716,7 +716,7 @@ for(i in 1:10){
 
 *Scroll Down Until the End(Not Recommended if There Are too Many Pages):*
 
-```
+```r
 element <- driver$findElement("css", "body")
 flag <- TRUE
 counter <- 0
