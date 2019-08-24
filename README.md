@@ -264,7 +264,7 @@ There are pros and cons of each method:
 
 #### 1.Execute javascript
 
-I'm not very familiar with Javascript, and I learned how to use it with this [post](https://datascienceplus.com/scraping-javascript-rendered-web-content-using-r/) 
+I'm not a expert in Javascript, and I learned how to use it with this [post](https://datascienceplus.com/scraping-javascript-rendered-web-content-using-r/) 
 
 #### 2.Use Developer tools
 
