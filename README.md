@@ -982,6 +982,8 @@ result <- read_html(parsed_pagesource) %>%
 
 Congratulations, no more concerns about AJAX or JavaScript as the browser will parse everything for you!
 
+But, of course, if you still need to run some javascript, yo can use `your_driver$executeScript()`
+
 ### 2.4.2. <a name="rselenium4.2">Iframe</a>
 
 Let's try to get all turtles family name in this [webpage](https://scrapethissite.com/pages/frames/), it doesn't work because the content is another webpage nested in the current one.
