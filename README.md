@@ -51,7 +51,7 @@ Please post issues [here](https://github.com/yusuzech/r-web-scraping-cheat-sheet
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
 ## 1.1. <a name="rvest1">Useful Libraries and Resources</a>
 
-[rvest](https://github.com/hadley/rvest) is built upon the xml2 package and also accept config from the httr package. For the most part, we only need rvest. If we want to add extra configurations, we also need httr.
+[rvest](https://github.com/hadley/rvest) is built upon the xml2 package and also accept config from the `httr` package. For the most part, we only need `rvest`. However, we need `httr` if we want to add extra configurations.
 
 To install those two packages:
 
