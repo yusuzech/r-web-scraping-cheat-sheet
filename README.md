@@ -97,7 +97,7 @@ Reading a url:
 
 ```R
 #making GET request andparse website into xml document
-pagesource <- html_read("http://example.com/page")
+pagesource <- read_html("http://example.com/page")
 
 #using html_session which creates a session and accept httr methods
 my_session <- html_session("http://example.com/page")
