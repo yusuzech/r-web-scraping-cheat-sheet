@@ -1,6 +1,6 @@
 # Web Scraping Reference: Cheat Sheet for Web Scraping using R
 
-Inspired by Hartley Brody, this cheat sheet is about web scraping using [rvest](https://github.com/hadley/rvest),[httr](https://github.com/r-lib/httr), [Rselenium](https://github.com/ropensci/RSelenium) and [Rcrawler](https://github.com/salimk/Rcrawler). It covers many topics in this [blog](https://blog.hartleybrody.com/web-scraping-cheat-sheet/).
+Inspired by Hartley Brody, this cheat sheet is about web scraping using [rvest](https://github.com/hadley/rvest),[httr](https://github.com/r-lib/httr) and [Rselenium](https://github.com/ropensci/RSelenium). It covers many topics in this [blog](https://blog.hartleybrody.com/web-scraping-cheat-sheet/).
 
 While Hartley uses python's requests and beautifulsoup libraries, this cheat sheet covers the usage of httr and rvest. While rvest is good enough for many scraping tasks, httr is required for more advanced techniques. Usage of Rselenium(web driver) is also covered.
 
@@ -46,7 +46,6 @@ Please post issues [here](https://github.com/yusuzech/r-web-scraping-cheat-sheet
     4. <a href = "#rselneium4">miscellanea</a>
        1. <a href="#rselenium4.1">Javascript</a>
        2. <a href="#rselenium4.2">Iframe</a>
-3. <a href="#rcrawler">Web Scraping using Rcrawler</a>
 
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
 ## 1.1. <a name="rvest1">Useful Libraries and Resources</a>
@@ -1017,5 +1016,3 @@ for (ele in elements){
 #switch back to the default page
 driver$switchToFrame()
 ```
-
-# 3. <a name="rcrawler">Web Scraping using Rcrawler</a>
