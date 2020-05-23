@@ -263,7 +263,9 @@ There are pros and cons of each method:
 
 #### 1.Execute javascript
 
-I'm not a expert in Javascript, and I learned how to use it with this [post](https://datascienceplus.com/scraping-javascript-rendered-web-content-using-r/) 
+I learned how to use Javascript with this [post](https://datascienceplus.com/scraping-javascript-rendered-web-content-using-r/). Since I'm not an expert in Javascript, I recommend you to search for other related resources online.
+
+If you don't know Javascipt, then this method is unlikely to be suitable for you. Since Javascript isn't an easy subject, I don't recommend you to learn it if your only purpose is to use it to do web-scraping in R. The following two methods are much easier.
 
 #### 2.Use Developer tools
 
