@@ -983,7 +983,7 @@ result <- read_html(parsed_pagesource) %>%
 
 Congratulations, no more concerns about AJAX or JavaScript as the browser will parse everything for you!
 
-But, of course, if you still need to run some javascript, yo can use `your_driver$executeScript()`
+But, of course, if you still need to run some javascript, then you can use `your_driver$executeScript()`
 
 ### 2.4.2. <a name="rselenium4.2">Iframe</a>
 
