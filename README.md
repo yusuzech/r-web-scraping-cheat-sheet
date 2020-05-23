@@ -309,7 +309,7 @@ Iframes are other websites embedded in the websites you are viewing as explained
 
 
 
-Therefore, to extract content in an iframe, you need to find the link to that HTML.
+Therefore, to extract content in an iframe, you need to find the link to the iframe HTML.
 
 ```R
 #example script
