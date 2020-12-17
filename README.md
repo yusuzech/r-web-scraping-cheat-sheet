@@ -621,7 +621,7 @@ As mentioned in previous sections, in JavaScript heavy websites, the majority of
 1. It's very slow:
    * Since the browser loads everything on the web page(including photos, ads or even videos), it will be really slow comparing to making requests using `httr` or `rvest`.
 2. Lacking support:
-   * Comparing to Selenium in Python, RSelenium doesn't have a large user base and hence lacks support. If you ever searched RSelenium related questions, you might already found out that: many solutions could be obsolete , you couldn't find related topics or the only solutions available were for Python..
+   * Comparing to Selenium in Python, RSelenium doesn't have a large user base and hence lacks support. If you ever searched RSelenium related questions, you might already found out that: many solutions could be obsolete , you couldn't find related topics or the only solutions available were for Python.
 
 ### 2.1.2 <a name="rselenium1.2">Useful Resources</a>
 
@@ -639,7 +639,7 @@ library(RSelenium)
 # start the server and browser(you can use other browsers here)
 rD <- rsDriver(browser=c("firefox"))
 
-driver <- rD$client
+driver <- rD[["client"]]
 
 # navigate to an URL
 driver$navigate("http://books.toscrape.com/")
@@ -648,14 +648,19 @@ driver$navigate("http://books.toscrape.com/")
 driver$close()
 
 #close the server
-rD$server$stop()
+rD[["server"]]$stop()
 ```
 
 **Common Issues and Solutions when starting the server and browser** 
 
-1. Port already in use:
-   - Solutions: [close the server](<https://stackoverflow.com/questions/43991498/rselenium-server-signals-port-is-already-in-use>)
-
+1. Port already in use.
+    - https://stackoverflow.com/questions/43991498/rselenium-server-signals-port-is-already-in-use.
+    - https://stackoverflow.com/questions/53464640/launch-rselenium-browser-regardless-of-port-open-closed
+    - Try restart Rstudio.
+2. session not created: This version of ChromeDriver only supports CHrome verssion XX.
+    - [Specify chrome version or install latest chrome driver](https://stackoverflow.com/questions/55201226/session-not-created-this-version-of-chromedriver-only-supports-chrome-version-7).
+3. Other issues:
+    - Try reinstall/update RSelenium or wdman package.
 
 
 ### 2.2.2. <a name = "rselenium2.1">Navigating to different URLs</a>
