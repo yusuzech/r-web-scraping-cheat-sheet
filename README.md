@@ -657,7 +657,7 @@ rD[["server"]]$stop()
     - https://stackoverflow.com/questions/43991498/rselenium-server-signals-port-is-already-in-use.
     - https://stackoverflow.com/questions/53464640/launch-rselenium-browser-regardless-of-port-open-closed
     - Try restart Rstudio.
-2. session not created: This version of ChromeDriver only supports CHrome verssion XX.
+2. session not created: This version of ChromeDriver only supports Chrome verssion XX.
     - [Specify chrome version or install latest chrome driver](https://stackoverflow.com/questions/55201226/session-not-created-this-version-of-chromedriver-only-supports-chrome-version-7).
 3. Other issues:
     - Try reinstall/update RSelenium or wdman package.
