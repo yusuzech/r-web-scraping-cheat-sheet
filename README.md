@@ -90,7 +90,7 @@ Sometimes you may get confused about all the functions and classes you have. You
 ## 1.2. <a name="rvest2">Making Simple Requests</a>
 
 rvest provides two ways of making request: `read_html()` and `html_session()`  
-`read_html()` can parse a HTML file or an url into xml document. `html_session()` is built on `GET()` from httr package and can accept configurations any additonal httr config.  
+`read_html()` can parse a HTML file or an url into xml document. `html_session()` is built on `GET()` from httr package and can accept configurations defined by httr package.  
 
 Reading a url:
 
