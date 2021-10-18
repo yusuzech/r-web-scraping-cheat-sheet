@@ -656,6 +656,12 @@ rD[["server"]]$stop()
 1. Port already in use.
     - https://stackoverflow.com/questions/43991498/rselenium-server-signals-port-is-already-in-use.
     - https://stackoverflow.com/questions/53464640/launch-rselenium-browser-regardless-of-port-open-closed
+    - Something the Java process behind RSelenium does not stop, thereby to ensure shutting down a RSelenium instance you may write:
+
+```
+# Kill Java process behind RSelenium
+system(paste0("Taskkill /F /T" ," /PID ", driver$server$process$get_pid()))
+```
     - Try restart Rstudio.
 2. session not created: This version of ChromeDriver only supports Chrome verssion XX.
     - [Specify chrome version or install latest chrome driver](https://stackoverflow.com/questions/55201226/session-not-created-this-version-of-chromedriver-only-supports-chrome-version-7).
