@@ -656,7 +656,7 @@ rD[["server"]]$stop()
 1. Port already in use.
     - https://stackoverflow.com/questions/43991498/rselenium-server-signals-port-is-already-in-use.
     - https://stackoverflow.com/questions/53464640/launch-rselenium-browser-regardless-of-port-open-closed
-    - Something the Java process behind RSelenium does not stop, thereby to ensure shutting down a RSelenium instance you may write:
+    - Something the Java process behind RSelenium does not stop when you apply `rD[["server"]]$stop()`, thereby to ensure shutting down a RSelenium instance you may write:
 
 ```r
 # Kill Java process behind RSelenium
