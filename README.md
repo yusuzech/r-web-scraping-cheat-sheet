@@ -658,7 +658,7 @@ rD[["server"]]$stop()
     - https://stackoverflow.com/questions/53464640/launch-rselenium-browser-regardless-of-port-open-closed
     - Something the Java process behind RSelenium does not stop, thereby to ensure shutting down a RSelenium instance you may write:
 
-```
+```r
 # Kill Java process behind RSelenium
 system(paste0("Taskkill /F /T" ," /PID ", driver$server$process$get_pid()))
 ```
