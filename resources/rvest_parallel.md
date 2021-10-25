@@ -16,7 +16,7 @@ wikipedia <- html_session(url_wiki)
 
 #get top 20 websites
 urls <- wikipedia %>%
-    html_nodes(my_css) %>%
+    html_elements(my_css) %>%
     html_text() %>%
     str_trim() %>%
     .[1:20]
@@ -57,8 +57,8 @@ result <- foreach(i = seq_along(urls),
                   .errorhandling='pass') %dopar% {
                       # get the header for each page
                       title <- html_session(urls[i]) %>% 
-                          html_node("head") %>% 
-                          html_node("title") %>% 
+                          html_element("head") %>% 
+                          html_element("title") %>% 
                           html_text()
                       return(list(title))
                   }
@@ -73,8 +73,8 @@ result2 <- list()
 t1 <- Sys.time()
 for(url in urls){
     title <- try(html_session(url) %>% 
-        html_node("head") %>% 
-        html_node("title") %>% 
+        html_element("head") %>% 
+        html_element("title") %>% 
         html_text())
     result2 <- append(result2,list(title))
 }

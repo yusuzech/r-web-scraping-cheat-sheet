@@ -49,7 +49,7 @@ download_google_img <- function(keyword_search,image_num = 50,scroll_times = 1,
     #after scrolling, wait a certain time for pictures to load
     Sys.sleep(scroll_times*5)
     #get picture source urls
-    img_href <- remDr %>% getPageSource() %>% html_nodes(css_img_src) %>% html_attr("src")
+    img_href <- remDr %>% getPageSource() %>% html_elements(css_img_src) %>% html_attr("src")
     #remove NAs in img_href
     img_href <- img_href[!is.na(img_href)]
     #how many images to return?

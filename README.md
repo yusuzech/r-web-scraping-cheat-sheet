@@ -46,6 +46,7 @@ Please post issues [here](https://github.com/yusuzech/r-web-scraping-cheat-sheet
     4. <a href = "#rselneium4">miscellanea</a>
        1. <a href="#rselenium4.1">Javascript</a>
        2. <a href="#rselenium4.2">Iframe</a>
+3. <a href="#change">Change Log</a>
 
 # 1. <a name="rvest">Web Scraping using rvest and httr</a>
 ## 1.1. <a name="rvest1">Useful Libraries and Resources</a>
@@ -179,19 +180,19 @@ my_session <- html_session("https://scrapethissite.com/pages/simple/")
 Look for nodes:
 
 ```R
-my_nodes <- my_session %>% html_nodes(".country")
+my_nodes <- my_session %>% html_elements(".country")
 ```
 
 Look for attributes:
 
 ```R
-my_attributes <- my_session %>% html_nodes(".country-capital") %>% html_attr("class")
+my_attributes <- my_session %>% html_elements(".country-capital") %>% html_attr("class")
 ```
 
 Look for texts:
 
 ```R
-my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
+my_texts <- my_session %>% html_elements(".country-capital") %>% html_text()
 ```
 
 ## 1.5. <a name="rvest5">Storing Data in R</a>
@@ -203,7 +204,7 @@ rvest can return a vector of elements or even table of elements, so it's easy to
 Usually, rvest can return a vector, so it's very easy to store it.
 
 ```R
-my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
+my_texts <- my_session %>% html_elements(".country-capital") %>% html_text()
 ```
 
 ### 1.5.2. <a name="rvest5.2">Storing Data as data.frame</a>
@@ -211,8 +212,8 @@ my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
 We can concatenate vectors in a table or using `html_table()` to extract a HTML table directly into a data.frame.
 
 ```R
-my_country <- my_session %>% html_nodes(".country-name") %>% html_text()
-my_capitals <- my_session %>% html_nodes(".country-capital") %>% html_text()
+my_country <- my_session %>% html_elements(".country-name") %>% html_text()
+my_capitals <- my_session %>% html_elements(".country-capital") %>% html_text()
 my_table <- data.frame(country = my_country, capital = my_capitals)
 ```
 
@@ -314,7 +315,7 @@ Therefore, to extract content in an iframe, you need to find the link to the ifr
 ```R
 #example script
 link_to_iframe <- my_session("www.example.com") %>%
-    html_node("css to locate the iframe") %>%
+    html_element("css to locate the iframe") %>%
     html_attr("src")
 #make another request to the iframe and use this session to extract information
 iframe_session <- html_session(link_to_iframe)
@@ -587,7 +588,7 @@ result <- foreach(i = seq_along(urls),
                   .combine = "c",
                   .errorhandling='pass') %dopar% {
                       text <- html_session(urls[i]) %>% 
-                          html_nodes("css") %>%
+                          html_elements("css") %>%
     					  html_text()
                       return(text)
                   }
@@ -981,7 +982,7 @@ Sys.sleep(2)
 parsed_pagesource <- driver$getPageSource()[[1]]
 # using rvest to extract information
 result <- read_html(parsed_pagesource) %>%
-    html_nodes(".film-title") %>%
+    html_elements(".film-title") %>%
     html_text()
 ```
 
@@ -1028,3 +1029,9 @@ for (ele in elements){
 #switch back to the default page
 driver$switchToFrame()
 ```
+
+# 3 <a name = "change">Change Log</a>
+
+- 2021-10-25: `html_node` changed to `html_element`, `html_element` changed to `html_elements`.
+    - Thanks [@victorcaquilpan](https://github.com/victorcaquilpan) for this suggestion.
+    - The reason for this chagne is mentioned in [rvest 1.0.0](https://www.tidyverse.org/blog/2021/03/rvest-1-0-0/)

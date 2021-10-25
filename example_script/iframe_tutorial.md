@@ -18,7 +18,7 @@ Let's try the following codes:
 library(rvest)
 my_url <- "https://scrapethissite.com/pages/frames/"
 turtle_names <- html_session(my_url) %>%
-    html_nodes(".family-name") %>%
+    html_elements(".family-name") %>%
     html_text()
 print(turtle_names)
 ```
@@ -42,13 +42,13 @@ library(stringr)
 my_url <- "https://scrapethissite.com/pages/frames/"
 #extract source as hown in the image above
 iframe_src <-  html_session(my_url) %>%
-    html_node("#iframe") %>%
+    html_element("#iframe") %>%
     html_attr("src")
 #get the url to that iframe
 iframe_url <- str_c("https://scrapethissite.com",iframe_src)
 #extract turtle names:
 turtle_names <- html_session(iframe_url) %>%
-    html_nodes(".family-name") %>%
+    html_elements(".family-name") %>%
     html_text()
 print(turtle_names)
 ```
