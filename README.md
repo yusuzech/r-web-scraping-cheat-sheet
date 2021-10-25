@@ -176,23 +176,25 @@ For the purpose of extracting elements, using `read_html()` or `html_session()` 
 my_session <- html_session("https://scrapethissite.com/pages/simple/")
 ```
 
-Look for nodes:
+Look for elements:
 
 ```R
-my_nodes <- my_session %>% html_nodes(".country")
+my_elements <- my_session %>% html_elements(".country")
 ```
 
 Look for attributes:
 
 ```R
-my_attributes <- my_session %>% html_nodes(".country-capital") %>% html_attr("class")
+my_attributes <- my_session %>% html_elements(".country-capital") %>% html_attr("class")
 ```
 
 Look for texts:
 
 ```R
-my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
+my_texts <- my_session %>% html_elements(".country-capital") %>% html_text()
 ```
+
+**Note**: Older rvest versions utilised `html_node` and `html_nodes`. Now these functions are deprecated, however, if other forums and blogs are consulted, they most likely use these functions. Based on the latest updates of rvest, you should implement `html_element` and `html_elements`.
 
 ## 1.5. <a name="rvest5">Storing Data in R</a>
 
@@ -203,7 +205,7 @@ rvest can return a vector of elements or even table of elements, so it's easy to
 Usually, rvest can return a vector, so it's very easy to store it.
 
 ```R
-my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
+my_texts <- my_session %>% html_elements(".country-capital") %>% html_text()
 ```
 
 ### 1.5.2. <a name="rvest5.2">Storing Data as data.frame</a>
@@ -211,8 +213,8 @@ my_texts <- my_session %>% html_nodes(".country-capital") %>% html_text()
 We can concatenate vectors in a table or using `html_table()` to extract a HTML table directly into a data.frame.
 
 ```R
-my_country <- my_session %>% html_nodes(".country-name") %>% html_text()
-my_capitals <- my_session %>% html_nodes(".country-capital") %>% html_text()
+my_country <- my_session %>% html_elements(".country-name") %>% html_text()
+my_capitals <- my_session %>% html_elements(".country-capital") %>% html_text()
 my_table <- data.frame(country = my_country, capital = my_capitals)
 ```
 
@@ -314,7 +316,7 @@ Therefore, to extract content in an iframe, you need to find the link to the ifr
 ```R
 #example script
 link_to_iframe <- my_session("www.example.com") %>%
-    html_node("css to locate the iframe") %>%
+    html_element("css to locate the iframe") %>%
     html_attr("src")
 #make another request to the iframe and use this session to extract information
 iframe_session <- html_session(link_to_iframe)
@@ -587,7 +589,7 @@ result <- foreach(i = seq_along(urls),
                   .combine = "c",
                   .errorhandling='pass') %dopar% {
                       text <- html_session(urls[i]) %>% 
-                          html_nodes("css") %>%
+                          html_elements("css") %>%
     					  html_text()
                       return(text)
                   }
@@ -982,7 +984,7 @@ Sys.sleep(2)
 parsed_pagesource <- driver$getPageSource()[[1]]
 # using rvest to extract information
 result <- read_html(parsed_pagesource) %>%
-    html_nodes(".film-title") %>%
+    html_elements(".film-title") %>%
     html_text()
 ```
 
