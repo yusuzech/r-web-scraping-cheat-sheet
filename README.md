@@ -1032,6 +1032,6 @@ driver$switchToFrame()
 
 # 3 <a name = "change">Change Log</a>
 
-- 2021-10-25: `html_node` changed to `html_element`, `html_element` changed to `html_elements`.
+- 2021-10-25: `html_node` changed to `html_element`, `html_nodes` changed to `html_elements`.
     - Thanks [@victorcaquilpan](https://github.com/victorcaquilpan) for this suggestion.
     - The reason for this chagne is mentioned in [rvest 1.0.0](https://www.tidyverse.org/blog/2021/03/rvest-1-0-0/)
