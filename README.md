@@ -79,6 +79,7 @@ There are many resources available online; these are what I found to be the most
 8. [ChroPath](<https://chrome.google.com/webstore/detail/chropath/ljngjbnaijcbncmcnjfhigebomdlkcjo>): a very convenient tool for choosing XPATH.
 9. [Stack Overflow](https://stackoverflow.com/) : You can find answers to most of your problems, no matter it's web scraping, rvest or CSS.
 10. [Web Scraping Sandbox](http://toscrape.com/): Great place to test your web scraping skills.
+11. [HTML Tutorial](https://www.scaler.com/topics/html/): For brushing up your HTML basics.  
 
 **Functions and classes in rvest/httr:**
 
