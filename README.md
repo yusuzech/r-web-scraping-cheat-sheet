@@ -69,16 +69,13 @@ require(httr)
 
 There are many resources available online; these are what I found to be the most useful:
 
-1. [Tutorial by Justin Law and Jordan Rosenblum](https://stat4701.github.io/edav/2015/04/02/rvest_tutorial/): web-scraping tutorial using rvest
-2. [Tutorial by  SAURAV KAUSHIK](https://www.analyticsvidhya.com/blog/2017/03/beginners-guide-on-web-scraping-in-r-using-rvest-with-hands-on-knowledge/)  : web-scraping tutorial using rvest
-3. [Tutorial by Hadley Wickham](http://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/)  : web-scraping tutorial using rvest 
-4. [w3schools CSS selectors reference](https://www.w3schools.com/CSSref/css_selectors.asp) : if you forget CSS syntax, just check it here
-5. [w3schools XPATH reference](<https://www.w3schools.com/xml/xpath_intro.asp>): XPATH is an alternative in selecting elements on websites. It's harder to learn but it's more flexible and robust.
-6. [CSS Diner](https://flukeout.github.io/) : the easiest way to learn and understand CSS by playing games.
-7. [Chrome CSS selector plugin](https://selectorgadget.com/): a convenient tool to use for choosing CSS selector.
-8. [ChroPath](<https://chrome.google.com/webstore/detail/chropath/ljngjbnaijcbncmcnjfhigebomdlkcjo>): a very convenient tool for choosing XPATH.
-9. [Stack Overflow](https://stackoverflow.com/) : You can find answers to most of your problems, no matter it's web scraping, rvest or CSS.
-10. [Web Scraping Sandbox](http://toscrape.com/): Great place to test your web scraping skills.
+1. [w3schools CSS selectors reference](https://www.w3schools.com/CSSref/css_selectors.asp) : if you forget CSS syntax, just check it here
+1. [w3schools XPATH reference](<https://www.w3schools.com/xml/xpath_intro.asp>): XPATH is an alternative in selecting elements on websites. It's harder to learn but it's more flexible and robust.
+1. [CSS Diner](https://flukeout.github.io/) : the easiest way to learn and understand CSS by playing games.
+1. [Chrome CSS selector plugin](https://selectorgadget.com/): a convenient tool to use for choosing CSS selector.
+1. [ChroPath](<https://chrome.google.com/webstore/detail/chropath/ljngjbnaijcbncmcnjfhigebomdlkcjo>): a very convenient tool for choosing XPATH.
+1. [Stack Overflow](https://stackoverflow.com/) : You can find answers to most of your problems, no matter it's web scraping, rvest or CSS.
+1. [Web Scraping Sandbox](http://toscrape.com/): Great place to test your web scraping skills.
 
 **Functions and classes in rvest/httr:**
 
